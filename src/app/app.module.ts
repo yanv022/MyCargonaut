@@ -11,6 +11,7 @@ import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
 import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
 import { FahrtErstellenComponent } from './components/fahrt-erstellen/fahrt-erstellen.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FahrtErstellenComponent } from './components/fahrt-erstellen/fahrt-erst
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
