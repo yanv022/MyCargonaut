@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fahrt-list.component.scss']
 })
 export class FahrtListComponent implements OnInit {
-  public isCollapsed = true;
+  public isCollapsed = true
+  date:Date=new Date();
 
   constructor() { }
 

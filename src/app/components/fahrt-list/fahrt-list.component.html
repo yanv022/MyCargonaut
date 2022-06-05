@@ -17,26 +17,19 @@
             <div class="col-2">
               <i class="fa-solid fa-arrow-right"></i>
             </div>
-            <div class="col-3">
+            <div class="col-4">
               <h6>{{test.wohin}}</h6>
               <h6>{{test.ankunft}}</h6>
-              <p>
-                <button type="button" class="btn detail" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
-                        aria-controls="collapseExample">
-                  Detail
-                </button>
-              </p>
-              <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+             <br/>
                 <div class="card">
                   <div class="card-body">
-                    <p>Sitzplatzt: 3 </p>
-                    <p>Autos: Audi</p>
-                    <p></p>
+                    <h6>Sitzplatzt: 3 </h6>
+                    <h6>Autos: Audi</h6>
+                    <h6>Tag: {{date |  date: 'dd-MM-yyyy'}}</h6>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4">
+            <div class="col-3">
               <h5 class="amount">25$</h5>
               <button type="button" class="btn buchen">buchen</button>
             </div>
