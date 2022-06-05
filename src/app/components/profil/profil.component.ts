@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
+
+  defaultDate="1995-12-12";
+
+
   constructor() { }
 
   ngOnInit(): void {
