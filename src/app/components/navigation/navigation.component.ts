@@ -11,5 +11,30 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  test: any[]=[{
+    abfahrt:"Ibrahim",
+    wo: "berlin",
+    ankunft:"Alvi",
+    wohin: "Maruburg"
+  },
+    {
+      abfahrt:"Ibrahim",
+      wo: "berlin",
+      ankunft:"Alvi",
+      wohin: "Maruburg"
+    },
+    {
+      abfahrt:"Ibrahim",
+      wo: "berlin",
+      ankunft:"Alvi",
+      wohin: "Maruburg"
+    },
+    {
+      abfahrt:"Ibrahim",
+      wo: "berlin",
+      ankunft:"Alvi",
+      wohin: "Maruburg"
+    }]
+
 
 }

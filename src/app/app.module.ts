@@ -13,6 +13,7 @@ import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.com
 import { FahrtErstellenComponent } from './components/fahrt-erstellen/fahrt-erstellen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent,
