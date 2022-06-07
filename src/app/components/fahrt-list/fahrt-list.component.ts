@@ -14,7 +14,7 @@ export class FahrtListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  test: any[]=[{
+  fahrtList: any[]=[{
     abfahrt:"9uhr00",
     wo: "berlin",
     ankunft:"Berlin",
