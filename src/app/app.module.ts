@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -12,6 +13,11 @@ import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component
 import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
 import { FahrtErstellenComponent } from './components/fahrt-erstellen/fahrt-erstellen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "src/environments/environment";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 
 @NgModule({
@@ -28,6 +34,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule
   ],
