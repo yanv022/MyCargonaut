@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FahrtenService } from 'src/app/services/fahrten.service';
 
 @Component({
   selector: 'app-fahrt-list',
@@ -9,68 +10,14 @@ export class FahrtListComponent implements OnInit {
   public isCollapsed = true
   date:Date=new Date();
 
-  constructor() { }
+  constructor(public fahrtenService: FahrtenService) { }
 
   ngOnInit(): void {
   }
 
-  fahrtList: any[]=[{
-    abfahrt:"9uhr00",
-    wo: "berlin",
-    ankunft:"Berlin",
-    wohin: "12uhr00",
-    name : "Max MusterMan"
-  },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    }
-  ]
+  isDate(potentialDate: any){
+     return potentialDate instanceof Date;
+  }
 
 
 }
