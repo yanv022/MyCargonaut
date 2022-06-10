@@ -23,7 +23,7 @@ jobs:
 
       - name: Test
         run: |
-          npm test
+          npm test -- --no-watch --no-progress
 
       - name: Deploy
         run: |
