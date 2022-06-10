@@ -20,7 +20,6 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm install
-      working-directory: MyCargonaut
       - name: Test
         run: |
           npm test -- --no-watch --no-progress
