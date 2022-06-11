@@ -23,6 +23,14 @@ jobs:
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
 
+      - name: Deploy
+        run: |
+          git config --local user.email "yanndela@gmail.com"
+          git config --local user.name "yanv022"
+          npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEPLOYCLIENT }}
+
     #  - name: Deploy
     #    uses: JamesIves/github-pages-deploy-action@v4.3.3
     #    with:
