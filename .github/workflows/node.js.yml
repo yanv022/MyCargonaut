@@ -23,12 +23,6 @@ jobs:
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
 
-      - name: Deploy
-        run: |
-
-          ng deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOYCLIENT }}
 
     #  - name: Deploy
     #    uses: JamesIves/github-pages-deploy-action@v4.3.3
