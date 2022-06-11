@@ -27,7 +27,7 @@ jobs:
         run: |
           git config --local user.email "yanndela@gmail.com"
           git config --local user.name "yanv022"
-          npm run deploy
+          ng deploy
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOYCLIENT }}
 
