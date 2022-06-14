@@ -13,8 +13,8 @@ export class CarsService {
 
   }
 
-  getSpecificCar(userId: string, carId: string){
-    return this.usersCollection.doc(userId).collection('cars').doc(carId).valueChanges();
+  getSpecificCarRef(userId: string, carId: string){
+    return this.usersCollection.doc(userId).collection('cars').doc(carId).get();
   }
 
 }

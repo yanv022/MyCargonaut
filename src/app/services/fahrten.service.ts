@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
-import fahrten from "src/app/model/interfaces/fahrten";
 import {CarsService} from "src/app/services/cars.service";
-import {combineLatest, map, Observable, of, switchMap} from "rxjs";
-import firebase from "firebase/compat";
-import Timestamp = firebase.firestore.Timestamp;
+import {combineLatest, map, of, switchMap} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AddModalComponent} from "src/app/components/add-modal/add-modal.component";
 
 @Injectable({
   providedIn: 'root'
@@ -12,36 +11,57 @@ import Timestamp = firebase.firestore.Timestamp;
 export class FahrtenService {
 
   public fahrten: any[] = []
+  public fahrtenLoaded: boolean;
   private readonly fahrtenCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private carsService: CarsService) {
+
+
+  constructor(private afs: AngularFirestore, private carsService: CarsService, private modalService: NgbModal) {
+    this.fahrtenLoaded = false;
     this.fahrtenCollection = this.afs.collection('fahrten');
+    this.afs.collection('fahrten').doc('LglGEi8qRO1zOEn6cpmj').snapshotChanges().subscribe((x)=>{
+        console.log(x)
+    })
     this.getAllRides();
   }
 
-  async getAllRides() {
-      await this.fahrtenCollection.valueChanges().pipe(map(
-      (fahrten: any[]) => fahrten.map(fahrt =>{
-          fahrt.abfahrt = fahrt.abfahrt ? fahrt.abfahrt.toDate() : 'Kein Datum angegeben';
-          fahrt.ankunft = fahrt.ankunft ? fahrt.ankunft.toDate() : 'Kein Datum angegeben';
-          return ({...fahrt})
-          })
-      )).forEach((fahrtenDocs) => {
-          this.fahrten = fahrtenDocs;
-          for(let fahrt of fahrtenDocs){
-              this.afs.collection('users').doc(fahrt['creatorId']).collection('cars').doc(fahrt['autoId'])
-                  .ref.onSnapshot((carSnapshot) =>{
-                      if(carSnapshot.exists) {
-                          fahrt["car"] = carSnapshot.data();
-                          if(!this.fahrten.includes(fahrt)){
-                              this.fahrten.push(fahrt);
-                          }
-                      }
-              })
+  getAllRides() {
+      return this.fahrtenCollection
+          .snapshotChanges()
+          .pipe(
+              map((actions: any[]) => actions.map((a) => ({...a.payload.doc.data(), ...{id: a.payload.doc.id}}))),
+              switchMap((rides: any[]) => {
+                  const carCols$ = rides.map((p) =>
+                      this.carsService.getSpecificCarRef(p['creatorId'], p['autoId'])
+                  );
 
-          }
-      })
+                  // passing the products value down the chain
+                  return combineLatest([of(rides), combineLatest(carCols$.length ? carCols$ : [of([])])]);
+              }),
+              map(([rides, carCols]) =>
+                  rides.map(async (r, idx) => {
+                      // @ts-ignore
+                      r.car = await carCols[idx].data();
+                      return r
+                  })
+              )
+          );
   }
 
+    openAddModal() {
+        const modalRef = this.modalService.open(AddModalComponent);
+        modalRef.componentInstance.submit.subscribe((receivedData: any)=>{
+            console.log(receivedData);
+            this.addRide(receivedData);
+        })
+        //modalRef.componentInstance.name = 'World';
+    }
+
+    addRide(ride: any){
+      let id = this.afs.createId()
+      this.fahrtenCollection.doc(id).set(
+          ride
+      )
+    }
 
 }
