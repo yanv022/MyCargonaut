@@ -40,9 +40,7 @@ export class FahrtListComponent implements OnInit {
     }
   }
 
-  isDate(potentialDate: any){
-     return potentialDate instanceof Date;
-  }
+
 
   newRide(){
     this.fahrtenService.openAddModal();

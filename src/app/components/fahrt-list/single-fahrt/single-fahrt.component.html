@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-3">
+                    <h6>{{fahrt.wo}}</h6>
+                    <h6 *ngIf="isDate(fahrt.abfahrt) else abfahrtNoPipe">{{fahrt.abfahrt |  date: 'medium'}}</h6>
+                    <ng-template #abfahrtNoPipe>
+                        <h6>{{fahrt.abfahrt}}</h6>
+                    </ng-template>
+                    <p class="name">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="50">
+                    </p>
+                    <h6 >{{user.username}}</h6>
+                    <p>{{user.forname}} {{user.surname}}</p>
+                    <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
+
+                </div>
+                <div class="col-2">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="col-4">
+                    <h6>{{fahrt.wohin}}</h6>
+                    <h6 *ngIf="isDate(fahrt.ankunft) else ankunftNoPipe">{{fahrt.ankunft |  date: 'medium'}}</h6>
+                    <ng-template #ankunftNoPipe>
+                        <h6>{{fahrt.ankunft}}</h6>
+                    </ng-template>
+                    <br/>
+                    <div class="card" *ngIf="fahrt.car">
+                        <div class="card-body">
+                            <h6>Plätze: {{fahrt.car.seats}}</h6>
+                            <h6>Auto: {{fahrt.car.brand}} {{fahrt.car.model}} {{fahrt.car.type}}</h6>
+                            <h6>Kofferraum: {{fahrt.car.storageInKg}} KG</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <h5 class="amount">25$</h5>
+                    <button type="button" class="btn buchen">buchen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
