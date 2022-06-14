@@ -8,6 +8,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegistrierenComponent } from './components/registrieren/registrieren.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {VerifyEmailComponent} from "./components/login/verify-email.component";
+import {AuthGuard} from "./shared/guard/auth.guard";
 
 const routes: Routes = [
   {path: 'profil',component: ProfilComponent},
@@ -17,7 +20,9 @@ const routes: Routes = [
   {path: 'fahrtSuche',component: FahrtSuchenComponent},
   {path: 'login',component: LoginComponent},
   {path: 'registrieren',component: RegistrierenComponent},
-  {path: 'Navigation',component: NavigationComponent}
+  {path: 'Navigation',component: NavigationComponent},
+  { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

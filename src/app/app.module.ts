@@ -18,6 +18,11 @@ import {environment} from "src/environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./services/user/auth.service";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {VerifyEmailComponent} from "./components/login/verify-email.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 
 @NgModule({
@@ -30,7 +35,11 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
-    FahrtErstellenComponent
+    FahrtErstellenComponent,
+    SignUpComponent,
+    VerifyEmailComponent,
+    DashboardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,9 +48,10 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
