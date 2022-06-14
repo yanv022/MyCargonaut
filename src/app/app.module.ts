@@ -11,13 +11,15 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
 import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
-import { FahrtErstellenComponent } from './components/fahrt-erstellen/fahrt-erstellen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "src/environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { FireDatePipe } from './model/pipes/fire-date.pipe';
+import { AddModalComponent } from './components/add-modal/add-modal.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -30,16 +32,18 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
-    FahrtErstellenComponent
+    FireDatePipe,
+    AddModalComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
