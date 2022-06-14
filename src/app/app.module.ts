@@ -17,6 +17,11 @@ import {environment} from "src/environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./services/user/auth.service";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { FireDatePipe } from './model/pipes/fire-date.pipe';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
@@ -32,6 +37,10 @@ import {FormsModule} from "@angular/forms";
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
+    FahrtErstellenComponent,
+    SignUpComponent,
+    DashboardComponent,
+    VerifyEmailComponent,
     FireDatePipe,
     AddModalComponent
   ],
@@ -44,8 +53,10 @@ import {FormsModule} from "@angular/forms";
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
+    login,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
