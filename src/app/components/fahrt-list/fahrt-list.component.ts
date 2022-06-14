@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl } from '@angular/forms';
+import { FahrtenService } from 'src/app/services/fahrten.service';
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-fahrt-list',
@@ -37,70 +39,44 @@ export class FahrtListComponent implements OnInit {
 
 
   public isCollapsed = true
+  public fahrten!: any;
   date:Date=new Date();
 
-
+  constructor(public fahrtenService: FahrtenService) {
+   this.getData();
+  }
 
   ngOnInit(): void {
   }
 
-  fahrtList: any[]=[{
-    abfahrt:"9uhr00",
-    wo: "berlin",
-    ankunft:"Berlin",
-    wohin: "12uhr00",
-    name : "Max MusterMan"
-  },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
-    },
-    {
-      abfahrt:"9uhr00",
-      wo: "berlin",
-      ankunft:"Berlin",
-      wohin: "12uhr00",
-      name : "Max MusterMan"
+  async getData() {
+    try{
+      await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
+        Promise.all(rideDocPromisses).then((rideDocument)=> {
+          this.fahrten = rideDocument.map(el => {
+            if(el.ankunft){
+              el.ankunft = el.ankunft.toDate();
+            }
+            if(el.abfahrt){
+              el.abfahrt = el.abfahrt.toDate();
+            }
+            return el;
+          });
+        })
+      });
+      }
+    catch (e) {
+      console.log('err');
     }
-  ]
+  }
+
+  isDate(potentialDate: any){
+     return potentialDate instanceof Date;
+  }
+
+  newRide(){
+    this.fahrtenService.openAddModal();
+  }
 
 
 }
