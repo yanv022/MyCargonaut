@@ -25,6 +25,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { FireDatePipe } from './model/pipes/fire-date.pipe';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
+import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {FormsModule} from "@angular/forms";
     DashboardComponent,
     VerifyEmailComponent,
     FireDatePipe,
-    AddModalComponent
+    AddModalComponent,
+    SingleFahrtComponent
   ],
   imports: [
     BrowserModule,
