@@ -1,8 +1,14 @@
 <p class="head">Fahrt List</p>
 
 <div class="container" >
+  <div class="row">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary btn-lg" (click)="newRide()">Neue Fahrt</button>
+    </div>
+  </div>
 <div class="row" >
-  <div class="col-sm-6 fahrtList" *ngFor="let fahrt of fahrtenService.fahrten" >
+  <ng-container *ngIf="fahrten">
+  <div class="col-sm-6 fahrtList" *ngFor="let fahrt of fahrten" >
     <div class="card">
       <div class="card-body">
         <div>
@@ -47,6 +53,7 @@
       </div>
     </div>
   </div>
+  </ng-container>
 </div>
 </div>
 

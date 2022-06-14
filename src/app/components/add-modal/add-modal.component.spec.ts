@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FahrtErstellenComponent } from './fahrt-erstellen.component';
+import { AddModalComponent } from 'src/app/components/add-modal/add-modal.component';
 
-describe('FahrtErstellenComponent', () => {
-  let component: FahrtErstellenComponent;
-  let fixture: ComponentFixture<FahrtErstellenComponent>;
+describe('AddModalComponent', () => {
+  let component: AddModalComponent;
+  let fixture: ComponentFixture<AddModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FahrtErstellenComponent ]
+      declarations: [ AddModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FahrtErstellenComponent);
+    fixture = TestBed.createComponent(AddModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
