@@ -38,7 +38,6 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
-    FahrtErstellenComponent,
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
@@ -55,7 +54,6 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
-    login,
     HttpClientModule
   ],
   providers: [AuthService],
