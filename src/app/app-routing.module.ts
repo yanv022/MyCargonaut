@@ -9,8 +9,8 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { RegistrierenComponent } from './components/registrieren/registrieren.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {VerifyEmailComponent} from "./components/login/verify-email.component";
 import {AuthGuard} from "./shared/guard/auth.guard";
+import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
 
 const routes: Routes = [
   {path: 'profil',component: ProfilComponent},

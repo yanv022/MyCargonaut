@@ -1,53 +1,49 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign Up</h3>
-      <div class="formGroup">
-        <input
-          type="email"
-          class="formControl"
-          placeholder="Email Address"
-          #userEmail
-          required
-        />
+
+<div class="container">
+  <br>
+  <div class="row justify-content-center">
+    <aside class="col-md-6">
+      <div class="card">
+        <article class="card-body">
+          <h4 class="float-center card-title mb-4 mt-1 " style="text-align: center">Registrieren</h4>
+          <form>
+            <div class="form-group">
+              <label>Nachname</label>
+              <input class="form-control"  type="text" >
+            </div>
+            <div class="form-group">
+              <label>Vorname</label>
+              <input class="form-control"  type="text" >
+            </div>
+            <div class="form-group">
+              <label>Username</label>
+              <input class="form-control"  type="text" >
+            </div>
+            <div class="form-group">
+              <label>Geburststag</label>
+              <input  class="form-control"  type="date" >
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input class="form-control" type="email" #userEmail required >
+            </div>
+            <div class="form-group">
+              <label>password</label>
+              <input class="form-control" type="password" #userPwd required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.SignUp(userEmail.value, userPwd.value)">Registrieren</button>
+            </div>
+          </form>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.GoogleAuth()">Mit Google einlogen</button>
+          </div>
+        </article>
       </div>
-      <div class="formGroup">
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Password"
-          #userPwd
-          required
-        />
-      </div>
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Sign Up"
-          (click)="authService.SignUp(userEmail.value, userPwd.value)"
-        />
-      </div>
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-      <!-- Continue with Google -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn googleBtn"
-          (click)="authService.GoogleAuth()"
-        >
-          <i class="fab fa-google-plus-g"></i>
-          Continue with Google
-        </button>
-      </div>
-    </div>
-    <div class="redirectToLogin">
-      <span
-      >Already have an account?
-        <span class="redirect" routerLink="/login">Log In</span></span
-      >
-    </div>
+
+    </aside>
+
   </div>
+
 </div>
+

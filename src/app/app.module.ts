@@ -21,8 +21,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./services/user/auth.service";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import {VerifyEmailComponent} from "./components/login/verify-email.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -37,8 +37,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
     FahrtSuchenComponent,
     FahrtErstellenComponent,
     SignUpComponent,
-    VerifyEmailComponent,
-    DashboardComponent
+    DashboardComponent,
+    VerifyEmailComponent
 
   ],
   imports: [
