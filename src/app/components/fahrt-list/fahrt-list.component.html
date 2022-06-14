@@ -1,6 +1,45 @@
-<p class="head">Fahrt List</p>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label >Abfahrtort</label>
+        <input type="text" class="form-control"  placeholder="Example input">
+      </div>
+      <div class="form-group">
+        <label >Ankuftort</label>
+        <input type="text" class="form-control" placeholder="Another input">
+      </div>
+      <div class="form-group">
+        <label >Autos</label>
+        <input type="text" class="form-control" placeholder="Example input">
+      </div>
+      <div class="form-group">
+        <label >Wann</label>
+        <input type="text" class="form-control"  placeholder="Another input">
+      </div>
+      <div class="form-group">
+        <label >Sitzplatz</label>
+        <input type="number" class="form-control" placeholder="Another input">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+
+</ng-template>
+<p></p>
+
+
+<!--pre>{{ closeResult }}</pre-->
 
 <div class="container" >
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">neue Fahrt</button>
 <div class="row" >
   <div class="col-sm-6 fahrtList" *ngFor="let test of fahrtList" >
     <div class="card">
