@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -18,14 +18,13 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {HttpClientModule} from "@angular/common/http";
-import {AuthService} from "./services/user/auth.service";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { FireDatePipe } from './model/pipes/fire-date.pipe';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
+import {AuthService} from "./services/user/auth.service";
 
 
 @NgModule({
@@ -41,7 +40,6 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
-    FireDatePipe,
     AddModalComponent,
     SingleFahrtComponent
   ],
@@ -56,7 +54,15 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     NgbModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (ds: AuthService) => () => ds.initalizeService(),
+      deps: [AuthService],
+      multi: true
+    }
+      ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{}

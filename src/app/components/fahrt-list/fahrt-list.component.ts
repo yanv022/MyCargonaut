@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FahrtenService } from 'src/app/services/fahrten.service';
-import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-fahrt-list',

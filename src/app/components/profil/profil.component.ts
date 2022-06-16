@@ -25,7 +25,7 @@ export class ProfilComponent implements OnInit {
     this.setData(this.authService.userData);
   }
   setData(user : any){
-    if(user =this.authService.userData ){
+    if(user == this.authService.userData ){
       this.disname = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL + '/assets/dummy-user.png';
