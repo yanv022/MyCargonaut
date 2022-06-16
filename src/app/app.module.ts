@@ -17,7 +17,6 @@ import {environment} from "src/environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
-import { FireDatePipe } from './model/pipes/fire-date.pipe';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
@@ -33,7 +32,6 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
-    FireDatePipe,
     AddModalComponent,
     SingleFahrtComponent
   ],
