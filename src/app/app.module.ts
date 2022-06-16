@@ -17,6 +17,11 @@ import {environment} from "src/environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./services/user/auth.service";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
@@ -32,6 +37,9 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
+    SignUpComponent,
+    DashboardComponent,
+    VerifyEmailComponent,
     AddModalComponent,
     SingleFahrtComponent
   ],
@@ -44,8 +52,9 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
