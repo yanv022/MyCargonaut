@@ -22,7 +22,6 @@ import {AuthService} from "./services/user/auth.service";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { FireDatePipe } from './model/pipes/fire-date.pipe';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 
@@ -37,11 +36,9 @@ import {FormsModule} from "@angular/forms";
     BewertungComponent,
     FahrtListComponent,
     FahrtSuchenComponent,
-    FahrtErstellenComponent,
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
-    FireDatePipe,
     AddModalComponent
   ],
   imports: [
@@ -53,7 +50,6 @@ import {FormsModule} from "@angular/forms";
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
-    login,
     HttpClientModule
   ],
   providers: [AuthService],
