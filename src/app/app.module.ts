@@ -25,6 +25,7 @@ import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {AuthService} from "./services/user/auth.service";
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
-    SingleFahrtComponent
+    SingleFahrtComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

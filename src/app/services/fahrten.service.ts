@@ -19,9 +19,6 @@ export class FahrtenService {
   constructor(private afs: AngularFirestore, private carsService: CarsService, private modalService: NgbModal) {
     this.fahrtenLoaded = false;
     this.fahrtenCollection = this.afs.collection('fahrten');
-    this.afs.collection('fahrten').doc('LglGEi8qRO1zOEn6cpmj').snapshotChanges().subscribe((x)=>{
-        console.log(x)
-    })
     this.getAllRides();
   }
 
@@ -51,10 +48,8 @@ export class FahrtenService {
     openAddModal() {
         const modalRef = this.modalService.open(AddModalComponent);
         modalRef.componentInstance.submit.subscribe((receivedData: any)=>{
-            console.log(receivedData);
             this.addRide(receivedData);
         })
-        //modalRef.componentInstance.name = 'World';
     }
 
     addRide(ride: any){

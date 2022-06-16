@@ -20,16 +20,7 @@ export class CarsService {
   }
 
   getCarsOfUser(userId: string){
-    let x = this.usersCollection.doc(userId).collection('cars')
-        .valueChanges().forEach((cars)=>{
-          Promise.all(cars).then((cars)=>{
-            this.userCars = cars;
-          })
-
-        })
-
-
-
+    return this.usersCollection.doc(userId).collection('cars').valueChanges({ idField: 'autoId' });
   }
 
 }

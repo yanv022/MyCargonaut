@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="loaded">
     <div class="card-body">
         <div>
             <div class="row">
@@ -11,7 +11,7 @@
                     <p class="name">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="50">
                     </p>
-                    <h6 >{{user.username}}</h6>
+                    <h6 >{{user.displayName}}</h6>
                     <p>{{user.forname}} {{user.surname}}</p>
                     <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
 
