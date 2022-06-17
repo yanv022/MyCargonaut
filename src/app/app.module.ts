@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
+import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-s
     VerifyEmailComponent,
     AddModalComponent,
     SingleFahrtComponent,
-    FahrtSucheComponent
+    FahrtSucheComponent,
+    BuchenComponent
   ],
   imports: [
     BrowserModule,
