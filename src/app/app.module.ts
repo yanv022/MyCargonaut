@@ -24,6 +24,7 @@ import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/singl
 import {AuthService} from "./services/user/auth.service";
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component
     AddModalComponent,
     SingleFahrtComponent,
     FahrtSucheComponent,
-    BuchenComponent
+    BuchenComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
