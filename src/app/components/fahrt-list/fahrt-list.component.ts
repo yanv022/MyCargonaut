@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FahrtenService } from 'src/app/services/fahrten.service';
+import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fahrt-list',
@@ -11,7 +13,7 @@ export class FahrtListComponent implements OnInit {
   public fahrten!: any;
   date:Date=new Date();
 
-  constructor(public fahrtenService: FahrtenService) {
+  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal) {
    this.getData();
   }
 
@@ -44,6 +46,14 @@ export class FahrtListComponent implements OnInit {
   newRide(){
     this.fahrtenService.openAddModal();
   }
-
+  openModal() {
+    //ModalComponent is component name where modal is declare
+    const modalRef = this.modalService.open(FahrtSucheComponent);
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
 }

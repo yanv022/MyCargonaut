@@ -1,7 +1,5 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -10,7 +8,6 @@ import { RegistrierenComponent } from './components/registrieren/registrieren.co
 import { ProfilComponent } from './components/profil/profil.component';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
-import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "src/environments/environment";
@@ -25,6 +22,7 @@ import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
+import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 
 
 @NgModule({
@@ -36,12 +34,12 @@ import {AuthService} from "./services/user/auth.service";
     ProfilComponent,
     BewertungComponent,
     FahrtListComponent,
-    FahrtSuchenComponent,
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
-    SingleFahrtComponent
+    SingleFahrtComponent,
+    FahrtSucheComponent
   ],
   imports: [
     BrowserModule,
