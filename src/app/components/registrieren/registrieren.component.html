@@ -5,39 +5,40 @@
     <aside class="col-md-6">
       <div class="card">
         <article class="card-body">
-          <h4 class="float-center card-title mb-4 mt-1 " style="text-align: center">Registrieren</h4>
+          <h4 class="float-center card-title mb-4 mt-1 schriffe " style="text-align: center">Registrieren</h4>
           <form>
             <div class="form-group">
-              <label>Nachname</label>
-              <input class="form-control"  type="text" >
+              <label class="schriffe">Nachname:</label>
+              <input class="form-control "  type="text" style="margin-bottom: 8px">
             </div>
             <div class="form-group">
-              <label>Vorname</label>
-              <input class="form-control"  type="text" >
+              <label class="schriffe">Vorname</label>
+              <input class="form-control"  type="text" style="margin-bottom: 8px">
             </div>
             <div class="form-group">
-              <label>Username</label>
-              <input class="form-control"  type="text" >
+              <label class="schriffe">Username</label>
+              <input class="form-control"  type="text"style="margin-bottom: 8px" >
             </div>
             <div class="form-group">
-              <label>Geburststag</label>
-              <input  class="form-control"  type="date" >
+              <label class="schriffe">Geburststag</label>
+              <input  class="form-control"  type="date"style="margin-bottom: 8px" >
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input class="form-control" type="email" #userEmail required >
+              <label class="schriffe">Email</label>
+              <input class="form-control" type="email" #userEmail required style="margin-bottom: 8px">
             </div>
             <div class="form-group">
-              <label>password</label>
-              <input class="form-control" type="password" #userPwd required>
+              <label class="schriffe">password</label>
+              <input class="form-control" type="password" #userPwd required style="margin-bottom: 8px">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.SignUp(userEmail.value, userPwd.value)">Registrieren</button>
+              <button type="submit" class="btn btn-primary btn-block form-control" style="background-color: #2B7A78; margin-top: 30px" (click)="authService.SignUp(userEmail.value, userPwd.value)">Registrieren</button>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block form-control" style="background-color: #2B7A78 ;margin-top: 12px" (click)="authService.GoogleAuth()">Mit Google einlogen</button>
             </div>
           </form>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.GoogleAuth()">Mit Google einlogen</button>
-          </div>
+
         </article>
       </div>
     </aside>
