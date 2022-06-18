@@ -1,0 +1,1 @@
+sudo docker build -t 16793/MyCargonaut:1.0 .
