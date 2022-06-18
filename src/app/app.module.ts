@@ -25,6 +25,7 @@ import {AuthService} from "./services/user/auth.service";
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     SingleFahrtComponent,
     FahrtSucheComponent,
     BuchenComponent,
-    HomepageComponent
+    HomepageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
