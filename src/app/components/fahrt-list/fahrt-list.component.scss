@@ -41,3 +41,9 @@ padding: 15px 15px 30px 15px;
   background-color: #DEF2F1 !important;
   color: black;
 }
+
+@media only screen and (min-width: 400px) {
+  .container{
+    padding-bottom: 245px;
+  }
+}
