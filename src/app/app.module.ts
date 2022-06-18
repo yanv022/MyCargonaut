@@ -26,6 +26,7 @@ import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-s
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FahrtSucheComponent,
     BuchenComponent,
     HomepageComponent,
-    FooterComponent
+    FooterComponent,
+    FahrtAnfrageComponent
   ],
   imports: [
     BrowserModule,

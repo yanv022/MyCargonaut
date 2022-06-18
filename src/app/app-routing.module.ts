@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
+import {FahrtAnfrageComponent} from "./components/fahrt-anfrage/fahrt-anfrage.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'homepage',component:HomepageComponent },
   {path:'',redirectTo:'homepage',pathMatch:'full'},
   {path: 'fahrtList',component: FahrtListComponent},
+  {path: 'fahrtAnfrage',component:FahrtAnfrageComponent},
   {path: 'login',component: LoginComponent},
   {path: 'registrieren',component: RegistrierenComponent},
   {path: 'Navigation',component: NavigationComponent},
