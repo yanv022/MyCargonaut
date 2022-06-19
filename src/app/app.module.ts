@@ -22,6 +22,7 @@ import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
+import { AlertComponent } from './components/alert/alert.component';
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -43,6 +44,7 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
     VerifyEmailComponent,
     AddModalComponent,
     SingleFahrtComponent,
+    AlertComponent
     FahrtSucheComponent,
     BuchenComponent,
     HomepageComponent,

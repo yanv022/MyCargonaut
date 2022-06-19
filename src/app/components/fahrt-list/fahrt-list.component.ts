@@ -24,7 +24,7 @@ export class FahrtListComponent implements OnInit {
     try{
       await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
         Promise.all(rideDocPromisses).then((rideDocument)=> {
-          this.fahrten = rideDocument.map(el => {
+          let fahrten = rideDocument.map(el => {
             if(el.ankunft){
               el.ankunft = el.ankunft.toDate();
             }
@@ -32,6 +32,10 @@ export class FahrtListComponent implements OnInit {
               el.abfahrt = el.abfahrt.toDate();
             }
             return el;
+
+          });
+          this.fahrten = fahrten.sort(function(a,b){
+            return a.abfahrt - b.abfahrt;
           });
         })
       });
