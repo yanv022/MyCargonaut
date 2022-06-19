@@ -13,7 +13,7 @@ export class SingleFahrtComponent implements OnInit {
   public user!: any;
   public loaded: boolean;
 
-  constructor(private userDataService: UserDataService) {
+  constructor(private userDataService: UserDataService, private modalService: NgbModal) {
     this.loaded = false;
   }
 

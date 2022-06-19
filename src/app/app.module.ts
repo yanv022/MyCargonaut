@@ -44,7 +44,7 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
     VerifyEmailComponent,
     AddModalComponent,
     SingleFahrtComponent,
-    AlertComponent
+    AlertComponent,
     FahrtSucheComponent,
     BuchenComponent,
     HomepageComponent,
