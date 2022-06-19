@@ -1,7 +1,5 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -10,7 +8,6 @@ import { RegistrierenComponent } from './components/registrieren/registrieren.co
 import { ProfilComponent } from './components/profil/profil.component';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
-import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "src/environments/environment";
@@ -26,6 +23,11 @@ import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
 import { AlertComponent } from './components/alert/alert.component';
+import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
+import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
 
 
 @NgModule({
@@ -37,13 +39,17 @@ import { AlertComponent } from './components/alert/alert.component';
     ProfilComponent,
     BewertungComponent,
     FahrtListComponent,
-    FahrtSuchenComponent,
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
     SingleFahrtComponent,
     AlertComponent
+    FahrtSucheComponent,
+    BuchenComponent,
+    HomepageComponent,
+    FooterComponent,
+    FahrtAnfrageComponent
   ],
   imports: [
     BrowserModule,

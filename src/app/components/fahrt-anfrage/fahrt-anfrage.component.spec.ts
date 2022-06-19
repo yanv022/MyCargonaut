@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FahrtSuchenComponent } from './fahrt-suchen.component';
+import { FahrtAnfrageComponent } from './fahrt-anfrage.component';
 
-describe('FahrtSuchenComponent', () => {
-  let component: FahrtSuchenComponent;
-  let fixture: ComponentFixture<FahrtSuchenComponent>;
+describe('FahrtAnfrageComponent', () => {
+  let component: FahrtAnfrageComponent;
+  let fixture: ComponentFixture<FahrtAnfrageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FahrtSuchenComponent ]
+      declarations: [ FahrtAnfrageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FahrtSuchenComponent);
+    fixture = TestBed.createComponent(FahrtAnfrageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

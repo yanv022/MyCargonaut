@@ -1,12 +1,12 @@
 .fahrtList{
-padding: 15px 15px 30px 15px;
+  padding: 15px 15px 30px 15px;
 }
 .card{
- border-radius: 17px;
+  border-radius: 17px;
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .head{
- margin: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
 }
 
 .element{
@@ -40,10 +40,4 @@ padding: 15px 15px 30px 15px;
 .btn{
   background-color: #DEF2F1 !important;
   color: black;
-}
-
-@media only screen and (min-width: 400px) {
-  .container{
-    padding-bottom: 245px;
-  }
 }

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
-import { FahrtSuchenComponent } from './components/fahrt-suchen/fahrt-suchen.component';
+import {FahrtAnfrageComponent} from "./components/fahrt-anfrage/fahrt-anfrage.component";
+import {HomepageComponent} from "./components/homepage/homepage.component";
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegistrierenComponent } from './components/registrieren/registrieren.component';
@@ -16,8 +17,10 @@ const routes: Routes = [
   {path: 'profil',component: ProfilComponent},
   {path: 'bewertung',component: BewertungComponent},
   {path: 'fahrtErstellen',component: AddModalComponent},
+  {path: 'homepage',component:HomepageComponent },
+  {path:'',redirectTo:'homepage',pathMatch:'full'},
   {path: 'fahrtList',component: FahrtListComponent},
-  {path: 'fahrtSuche',component: FahrtSuchenComponent},
+  {path: 'fahrtAnfrage',component:FahrtAnfrageComponent},
   {path: 'login',component: LoginComponent},
   {path: 'registrieren',component: RegistrierenComponent},
   {path: 'Navigation',component: NavigationComponent},

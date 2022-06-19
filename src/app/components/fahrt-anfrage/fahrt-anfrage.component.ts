@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FahrtenService } from 'src/app/services/fahrten.service';
-import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {FahrtenService} from "../../services/fahrten.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FahrtSucheComponent} from "../fahrt-list/fahrt-suche/fahrt-suche.component";
 
 @Component({
-  selector: 'app-fahrt-list',
-  templateUrl: './fahrt-list.component.html',
-  styleUrls: ['./fahrt-list.component.scss']
+  selector: 'app-fahrt-anfrage',
+  templateUrl: './fahrt-anfrage.component.html',
+  styleUrls: ['./fahrt-anfrage.component.scss']
 })
-export class FahrtListComponent implements OnInit {
+export class FahrtAnfrageComponent implements OnInit {
   public isCollapsed = true
   public fahrten!: any;
   date:Date=new Date();
 
   constructor(public fahrtenService: FahrtenService , public modalService: NgbModal) {
-   this.getData();
+    this.getData();
   }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class FahrtListComponent implements OnInit {
     try{
       await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
         Promise.all(rideDocPromisses).then((rideDocument)=> {
-          let fahrten = rideDocument.map(el => {
+          this.fahrten = rideDocument.map(el => {
             if(el.ankunft){
               el.ankunft = el.ankunft.toDate();
             }
@@ -32,14 +32,10 @@ export class FahrtListComponent implements OnInit {
               el.abfahrt = el.abfahrt.toDate();
             }
             return el;
-
-          });
-          this.fahrten = fahrten.sort(function(a,b){
-            return a.abfahrt - b.abfahrt;
           });
         })
       });
-      }
+    }
     catch (e) {
       console.log('err');
     }
@@ -59,5 +55,4 @@ export class FahrtListComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
