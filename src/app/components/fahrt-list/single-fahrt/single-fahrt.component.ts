@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {BuchenComponent} from "../buchen/buchen.component";
+import {HelpService} from "src/app/services/help.service";
 
 @Component({
   selector: 'app-single-fahrt',
@@ -13,7 +14,7 @@ export class SingleFahrtComponent implements OnInit {
   public user!: any;
   public loaded: boolean;
 
-  constructor(private userDataService: UserDataService, private modalService: NgbModal) {
+  constructor(private userDataService: UserDataService, private modalService: NgbModal, public helperService: HelpService) {
     this.loaded = false;
   }
 
@@ -26,9 +27,7 @@ export class SingleFahrtComponent implements OnInit {
     )
   }
 
-  isDate(potentialDate: any){
-    return potentialDate instanceof Date;
-  }
+
   buchen(){
       const modalRef = this.modalService.open(BuchenComponent);
       modalRef.result.then((result) => {
