@@ -28,6 +28,8 @@ import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
     BuchenComponent,
     HomepageComponent,
     FooterComponent,
-    FahrtAnfrageComponent
+    FahrtAnfrageComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
     AngularFireDatabaseModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPayPalModule
   ],
   providers: [
     AuthService,
