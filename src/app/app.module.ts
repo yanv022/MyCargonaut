@@ -28,6 +28,8 @@ import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
+import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
+import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
     BuchenComponent,
     HomepageComponent,
     FooterComponent,
-    FahrtAnfrageComponent
+    FahrtAnfrageComponent,
+    AnfrageSucheComponent,
+    SingleAnfrageComponent
   ],
   imports: [
     BrowserModule,
