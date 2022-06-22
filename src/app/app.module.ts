@@ -20,6 +20,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
 import { AlertComponent } from './components/alert/alert.component';
@@ -45,6 +46,7 @@ import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrag
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
+    ForgotPasswordComponent,
     SingleFahrtComponent,
     AlertComponent,
     FahrtSucheComponent,
