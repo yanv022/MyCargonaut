@@ -24,6 +24,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AddModalComponent } from './components/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {FormsModule} from "@angular/forms";
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
-    AddModalComponent
+    AddModalComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

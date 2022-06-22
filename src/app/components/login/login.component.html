@@ -13,18 +13,21 @@
               <input name="Email" class="form-control" id="Email" placeholder="Email Address"  type="email" #Email required>
             </div>
             <div class="form-group">
-              <a class="float-right" routerLink="registrieren">Forgot?</a>
+              <a class="float-right" routerLink="/forgot-password">Forgot?</a>
               <label>password</label>
               <input class="form-control" type="password" id="password" placeholder="Password" #password>
             </div>
 
             <div class="form-group">
-              <button  class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.SignUp(Email.value, password.value)"> Login  </button>
+              <button  class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.SignIn(Email.value, password.value)"> Login  </button>
             </div>
           </form>
           <div class="form-group">
             <button  class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.GoogleAuth()"> Login  with Google </button>
 
+          </div>
+          <div class="redirectToLogin">
+            <span>forgot<span class="redirect" routerLink="/forgot-password">Log In</span></span>
           </div>
         </article>
       </div>

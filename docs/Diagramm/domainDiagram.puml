@@ -74,6 +74,7 @@ class Profil {
   profilbild
   email
   passwort
+  bewertung
 }
 
 Session *-right- Profil
@@ -93,7 +94,7 @@ legend right
   | UML-Tool| PlantUML v1.2019.5|
   | Ersteller| Yann Abel Ndemmeze Vougue|
   | Mail| yann.abel.ndemmeze.vougue@mni.thm.de |
-  | Letzte Änderung| 31.05.2022 |
+  | Letzte Änderung| 21.06.2022 |
 end legend
 
 @enduml
