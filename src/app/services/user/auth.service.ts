@@ -82,7 +82,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerified !== false;
   }
   // Sign in with Google
   GoogleAuth() {
@@ -130,5 +130,12 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });
+  }
+
+  /** FOR APP MODULE INIT
+   *  - dient dazu um den Authentifizierungsservice beim erstmaligen laden der Seite direkt zu initialisieren.
+   * */
+  initalizeService(){
+    console.log("Authentification Serivce successfully initialized");
   }
 }

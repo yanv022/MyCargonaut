@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FahrtenService } from 'src/app/services/fahrten.service';
-import firebase from "firebase/compat";
+import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fahrt-list',
@@ -12,7 +13,7 @@ export class FahrtListComponent implements OnInit {
   public fahrten!: any;
   date:Date=new Date();
 
-  constructor(public fahrtenService: FahrtenService) {
+  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal) {
    this.getData();
   }
 
@@ -23,7 +24,7 @@ export class FahrtListComponent implements OnInit {
     try{
       await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
         Promise.all(rideDocPromisses).then((rideDocument)=> {
-          this.fahrten = rideDocument.map(el => {
+          let fahrten = rideDocument.map(el => {
             if(el.ankunft){
               el.ankunft = el.ankunft.toDate();
             }
@@ -31,6 +32,10 @@ export class FahrtListComponent implements OnInit {
               el.abfahrt = el.abfahrt.toDate();
             }
             return el;
+
+          });
+          this.fahrten = fahrten.sort(function(a,b){
+            return a.abfahrt - b.abfahrt;
           });
         })
       });
@@ -40,13 +45,19 @@ export class FahrtListComponent implements OnInit {
     }
   }
 
-  isDate(potentialDate: any){
-     return potentialDate instanceof Date;
-  }
+
 
   newRide(){
     this.fahrtenService.openAddModal();
   }
-
+  openModal() {
+    //ModalComponent is component name where modal is declare
+    const modalRef = this.modalService.open(FahrtSucheComponent);
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
 }

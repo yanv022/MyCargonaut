@@ -1,9 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import { Output, EventEmitter } from '@angular/core';
-import Fahrt from "src/app/model/interfaces/fahrten";
-import * as firebase from '@angular/fire/compat';
-import Car from "src/app/model/interfaces/car";
+import {CarsService} from "src/app/services/cars.service";
+import { AuthService } from 'src/app/services/user/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
+import firebase from 'firebase/compat/app';
+
 
 @Component({
   selector: 'app-add-modal',
@@ -17,38 +19,89 @@ export class AddModalComponent implements OnInit {
   title!: string;
   where!: string;
   to!: string;
-  date!: any;
-  time!: any;
+  dateAnkunft!: any;
+  dateAbfahrt!: any;
+  timeAnkunft!: any;
+  timeAbfahrt!: any;
   description!: string;
   cars!: any[];
   selectedCar!: any;
   @Output() submit = new EventEmitter<{}>();
 
-  //TODO: 2. datum hinzufügen für ankunft
-  submitData(){
 
-    if(this.title != undefined && this.where.length != undefined && this.to.length != undefined && this.date != undefined
-    &&this.time != undefined && this.description != undefined && this.selectedCar != undefined) {
-      let fahrt = {abfahrt: new Date(), wo: this.where, ankunft: new Date(),
-      wohin: this.to, name: this.title, creatorId: 'f29hRnOBQh1tb4AKZGev', autoId: this.selectedCar.autoId}
-      this.submit.emit(fahrt);
-    } else {
-      console.log('select values');
+
+  constructor(public activeModal: NgbActiveModal, private carsService: CarsService, private authService: AuthService, private alertService: AlertService) {
+
+  }
+
+  async ngOnInit(): Promise<void> {
+    const uid = await this.authService.userData._delegate.uid
+    if(uid === undefined){
+      this.alertService.newAlert('Bitte zuerst einloggen', 'warning');
+      this.activeModal.dismiss('Nicht eingeloggt');
+      return;
     }
+    await this.carsService.getCarsOfUser(uid).forEach((cars) => {
+      Promise.all(cars).then((cars) => {
+        this.cars = cars;
+      }).then(()=>{
+        if(this.cars != undefined) {
+          if (this.cars.length === 0) {
+            this.alertService.newAlert('Sie brauchen mindestens ein Auto', 'danger');
+            this.activeModal.dismiss('Auto benötigt');
+            return;
+          }
+        }
+        else {
+            this.alertService.newAlert('Sie brauchen mindestens ein Auto', 'danger');
+            this.activeModal.dismiss('Auto benötigt');
+            return;
+        }
+      })
+    })
   }
 
-  setCar(car: any){
-    this.selectedCar = car;
-  }
 
-  constructor(public activeModal: NgbActiveModal) {
-    this.cars = [{brand: "Ford", color: "blau", model:"Focus", seats:"5", storageInKg: "500", type:"combi", autoId: 'kRO6mCbnb5hScGXGThJt'},
-      {brand: "Opel", color: "grün", model:"Corsa", seats:"3", storageInKg: "200", type:"combi", autoId: 'kRO6mCbnb5hScGXGThJt'}
-    ]
-  }
+   async submitData(){
+    try {
+      const uid = await this.authService.userData._delegate.uid
+      if(uid === undefined){ console.log('please login first'); return; }
+      let timestamps = this.makeTime();
+      if(isNaN(timestamps.timestampAbfahrt.nanoseconds) || isNaN(timestamps.timestampAbfahrt.seconds) ||
+          isNaN(timestamps.timestampAnkunft.nanoseconds) || isNaN(timestamps.timestampAnkunft.seconds)){
+        this.alertService.newAlert('Datum und Zeit brauchen korrekte Werte', 'danger');
+        return;
+      }
+        if (this.title != undefined && this.where.length != undefined && this.to.length != undefined && this.description != undefined && this.selectedCar != undefined) {
 
-  ngOnInit(): void {
-  }
+          let fahrt = {
+            abfahrt: timestamps.timestampAbfahrt, wo: this.where, ankunft: timestamps.timestampAnkunft,
+            wohin: this.to, name: this.title, creatorId: uid, autoId: this.selectedCar.autoId
+          }
+        this.submit.emit(fahrt);
+      } else {
+        this.alertService.newAlert('Bitte zuerst alle Felder ausfüllen', 'warning');
+      }
+    }
+    catch(e) {
+        console.log(e);
+    }
+    }
+
+    setCar(car: any){
+      console.log(car);
+      this.selectedCar = car;
+    }
+
+    makeTime(){
+      const dateAnkunft = new Date(this.dateAnkunft.year, this.dateAnkunft.month, this.dateAnkunft.day, this.timeAnkunft
+          .hour, this.timeAnkunft.minute);
+      const timestampAnkunft = firebase.firestore.Timestamp.fromDate(dateAnkunft);
+      const dateAbfahrt = new Date(this.dateAbfahrt.year, this.dateAbfahrt.month, this.dateAbfahrt.day, this.timeAbfahrt
+          .hour, this.timeAbfahrt.minute);
+      const timestampAbfahrt = firebase.firestore.Timestamp.fromDate(dateAbfahrt);
+      return {timestampAnkunft, timestampAbfahrt};
+    }
 
 
 

@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title">Anfrage Suche</h4>
+</div>
+<div class="modal-body">
+  <label for="to">Wohin?</label>
+  <input id="to" type="text" class="form-control" [(ngModel)]="to" required/>
+  <label for="where">Von wo?</label>
+  <input id="where" type="text" class="form-control" [(ngModel)]="where" required/>
+  <label for="date">Datum</label>
+  <div id="date">
+    <input  type="text" class="form-control" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="date"/>
+    <button type="button" class="btn btn-primary" (click)="d.toggle()">Datum</button>
+  </div>
+  <label for="car">Auto</label>
+  <br/>
+  <div id="car" ngbDropdown class="d-inline-block">
+    <button type="button" class="btn btn-primary" id="carBtn" ngbDropdownToggle>Auto auswählen</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+      <button ngbDropdownItem (click)="setCar(car)" *ngFor="let car of cars">{{car.brand}} {{car.model}}</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Close</button>
+</div>

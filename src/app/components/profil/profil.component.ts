@@ -25,10 +25,24 @@ export class ProfilComponent implements OnInit {
     this.setData(this.authService.userData);
   }
   setData(user : any){
-    if(user =this.authService.userData ){
+    if(user == this.authService.userData ){
       this.disname = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL + '/assets/dummy-user.png';
+    }
+  }
+
+  url = 'https://img.icons8.com/ios/100/000000/contract-job.png';
+  onSelect(event:any) {
+    let fileType = event.target.files[0].type;
+    if (fileType.match(/image\/*/)) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+    } else {
+      window.alert('Please select correct image format');
     }
   }
 
