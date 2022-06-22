@@ -23,15 +23,8 @@
               <button class="btn btn-primary btn-block form-control" style="background-color: #2B7A78" (click)="authService.SignUp(Email.value, password.value)"> Login  </button>
             </div>
             <div class="form-group">
-              <button  class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.SignIn(Email.value, password.value)"> Login  </button>
+              <button  class="btn btn-primary btn-block form-control" style="background-color: #2B7A78 ;margin-top: 12px" (click)="authService.GoogleAuth()"> Login  with Google </button>
             </div>
-          </form>
-          <div class="form-group">
-            <button  class="btn btn-primary btn-block" style="background-color: #2B7A78" (click)="authService.GoogleAuth()"> Login  with Google </button>
-
-          </div>
-          <div class="redirectToLogin">
-            <span>forgot<span class="redirect" routerLink="/forgot-password">Log In</span></span>
           </form>
         </article>
       </div>

@@ -42,12 +42,11 @@ import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrag
     ProfilComponent,
     BewertungComponent,
     FahrtListComponent,
-    FahrtSuchenComponent,
     SignUpComponent,
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
     SingleFahrtComponent,
     AlertComponent,
     FahrtSucheComponent,

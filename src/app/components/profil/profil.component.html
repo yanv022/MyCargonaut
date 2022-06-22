@@ -1,48 +1,24 @@
 
   <div class="container" style="padding-bottom: 250px">
-    <div class="row">
+    <div class="row" *ngIf="authService.userData as user">
       <div class="col-md-1">
       </div>
       <div class="col-4 cardpadding">
         <div class="card cardForm">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <img [src]="url" alt="Admin" class="rounded-circle" width="120">
+              <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="Admin" class="rounded-circle" width="120">
               <div class="mt-3">
-                <h4>Max musterman</h4>
-                <input
-                  type="file"
-                  id="img"
-                  style="display:none"
-                  accept="image/*"
-                  (change)="onSelect($event)">
+                <h4>{{user.displayName}}</h4>
+                <input type="file" id="img" style="display:none" accept="image/*" (change)="onSelect($event)">
                       <div class="row">
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-4 cardpadding">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="card-title"><h5 style="text-align: center">Bewertung</h5></div>
-                              <p>
-                                Ich,Anita,buche stets für meinen Mann die Strecke:Berlin-Neubrandenburg-Berlin.Er
-                                selbst hat sehr viele positive Bewertungen seitens der Fahrer bekommen,aber diesmal war der
-                                Hammer:Ich habe bei Paul gebucht mit dem Zusatz
-                              </p>
-                              <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
-                            </div>
-                          </div>
-
                         </div>
                         <div class="col-md-7 cardpadding">
                         </div>
-
-
                       </div>
-                  <div>
-                    <a class="nav-link" (click)="authService.SignOut()">
-                      <i class="fas fa-sign-out-alt"></i>Log out
-                    </a>
-                  </div>
                 <label class="btn btn-outline-info" style="margin-right: 12px;" for="img" >Upload Image</label>
                 <button  class="btn btn-outline-info btn1" style="margin-right: 12px;">bild löschen </button>
               </div>
@@ -57,13 +33,7 @@
               <div class="form-group row rowDetail">
                 <label  class="col-sm-2 col-form-label">Name</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control detail"  value="Musterman" disabled>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label  class="col-sm-2 col-form-label" >Vorname </label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control detail"  value="Max" disabled>
+                  <input type="text" class="form-control detail"  value="{{user.displayName}}" disabled>
                 </div>
               </div>
               <div class="form-group row">
@@ -75,7 +45,7 @@
               <div class="form-group row">
                 <label  class="col-sm-2 col-form-label" >Email </label>
                 <div class="col-md-10">
-                  <input type="Email" class="form-control detail"  value="test@gmail.com" disabled>
+                  <input type="Email" class="form-control detail"  value="{{user.email}}" disabled>
                 </div>
               </div>
               <div class="form-group row">
@@ -115,5 +85,10 @@
         </div>
       </div>
     </div>
+    <div class="row" *ngIf ="authService.userData as user ; else elseBlock"></div>
+    <ng-template 250px #elseBlock>
+      <p>Sie müssen sich einlogen um Ihre Profil zu sehen</p>
+      <a routerLink="login" routerLinkActive="active" class="nav-link navgGosse" ><span><i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</span></a>
+    </ng-template>
   </div>
 
