@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
+import {UserDataService} from "../../services/user-data.service";
 
 @Component({
   selector: 'app-profil',
@@ -18,11 +19,13 @@ export class ProfilComponent implements OnInit {
   private user: any;
 
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+              public userservice: UserDataService) {
   }
 
   ngOnInit(): void {
     console.log("ng debut")
+    //this.userservice.setname("je mapel")
     this.setData();
     this.photoURL = this.authService.userData.photoURL + '/assets/dummy-user.png';
     console.log("ng fin")
