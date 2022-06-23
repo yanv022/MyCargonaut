@@ -8,6 +8,9 @@ import {UserDataService} from "../../services/user-data.service";
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  date: Date = new Date("2010-01-16");
+
+
   constructor(public authService: AuthService,
               public userDataservice: UserDataService) {}
   ngOnInit(): void {}
