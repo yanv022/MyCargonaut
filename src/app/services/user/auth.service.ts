@@ -40,7 +40,7 @@ export class AuthService {
         this.ngZone.run(() => {
           this.router.navigate(['profil']);
         });
-        this.SetUserData(result.user);
+        //this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -118,7 +118,7 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      dayOfBirth: user.dayOfBirth,
+      dayOfBirth: new Date("2010-01-16"),
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
 import {UserDataService} from "../../services/user-data.service";
+import {FahrtenService} from "../../services/fahrten.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +10,11 @@ import {UserDataService} from "../../services/user-data.service";
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  date: Date = new Date("2010-01-16");
-
+  dateuser: Date = new Date("2010-01-16");
 
   constructor(public authService: AuthService,
-              public userDataservice: UserDataService) {}
+              public userDataservice: UserDataService,
+              public fahrtenService: FahrtenService , public modalService: NgbModal) {}
   ngOnInit(): void {}
 }
+

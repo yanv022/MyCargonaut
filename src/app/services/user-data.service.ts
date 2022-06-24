@@ -7,6 +7,9 @@ import {
 } from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
 import {User} from "../model/interfaces/user";
+import {AuthService} from "./user/auth.service";
+import {snapshotChanges} from "@angular/fire/compat/database";
+import {onSnapshot} from "@angular/fire/firestore";
 
 
 
@@ -15,28 +18,56 @@ import {User} from "../model/interfaces/user";
 })
 export class UserDataService implements OnInit {
   private userCollection: AngularFirestoreCollection<User>;
-  userData: any; // Save logged in user data
-  users: Observable<DocumentChangeAction<User>[]> | undefined;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              public authService: AuthService) {
     this.userCollection = this.afs.collection('users');
+    this.userCollection.valueChanges();
+    this.userCollection.snapshotChanges();
   }
   ngOnInit(): void {
-    this.userCollection = this.afs.collection('users');
-    this.users = this.userCollection.snapshotChanges()
-      /*.map((actions: any[]) => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as User;
-          const id = a.payload.doc.id;
-          return {id,data}
-        })
-      })*/
-
   }
   getUserDataById_Observable(userId: string): Observable<any>{
     return this.userCollection.doc(userId).valueChanges();
   }
+  uptate(attribute: string, value : string){
+    attribute = attribute.toUpperCase();
+    switch (attribute) {
+      case 'NAME':
+        this.userCollection.doc(this.authService.userData.uid).update({displayName:value});
+        break;
+      case 'DISPLAYNAME':
+        this.userCollection.doc(this.authService.userData.uid).update({displayName:value});
+        break;
+      case 'EMAIL':
+        this.userCollection.doc(this.authService.userData.email).update({displayName:value});
+        break;
+      case 'PHOTOURL':
+        this.userCollection.doc(this.authService.userData.photoURL).update({displayName:value});
+        break;
+      case 'EMAILVERIFIED':
+        this.userCollection.doc(this.authService.userData.emailVerified).update({displayName:value});
+        break;
+      default:
+        console.log('erreur atribute bei uptate')
+        break;
 
+
+    }
+  }
+  uptatename(name : string,user: any){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    this.uptataLocalStorage(user);
+    console.log(localStorage.getItem('user'));
+
+    return userRef.update({displayName:name});
+
+  }
+  deleteUser(){
+        this.userCollection.doc(this.authService.userData.uid).delete();
+  }
   test(){
     const userData: User = {
       uid: 'anlage',
@@ -74,7 +105,29 @@ export class UserDataService implements OnInit {
     return userRef.set(userData, {
       merge: true,
     });
+
   }
+
+  uptataLocalStorage(user:any){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      dayOfBirth: new Date("2010-01-16"),
+      emailVerified: user.emailVerified,
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+  }
+  getallchange(){
+    this.userCollection.snapshotChanges()
+  }
+
 
 
 }
