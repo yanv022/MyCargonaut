@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FahrtenService} from "../../services/fahrten.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AnfrageSucheComponent} from "./anfrage-suche/anfrage-suche.component";
+import {NeueAnfrageComponent} from "./neue-anfrage/neue-anfrage.component";
 
 @Component({
   selector: 'app-fahrt-anfrage',
@@ -41,11 +42,15 @@ export class FahrtAnfrageComponent implements OnInit {
     }
   }
 
-
-
-  newRide(){
-    this.fahrtenService.openAddModal();
+  newAnfrage(){
+    const modalRef = this.modalService.open(NeueAnfrageComponent);
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
+
   openModal() {
     //ModalComponent is component name where modal is declare
     const modalRef = this.modalService.open(AnfrageSucheComponent);
