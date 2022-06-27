@@ -14,7 +14,7 @@
             <div class="form-group">
               <!--a class="float-end" routerLink="registrieren">Forgot password?</a-->
               <label  class="schriffe mt-3">Password</label>
-              <input class="form-control" type="password" id="password" placeholder="Password" #password>
+              <input class="form-control" type="password" id="password" placeholder="Password" #password required>
             </div><br/>
             <div class="form-group">
               <button class="btn btn-primary btn-block form-control" style="background-color: #2B7A78" (click)="authService.SignUp(Email.value, password.value)"> Login  </button>
