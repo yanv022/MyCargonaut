@@ -5,6 +5,7 @@ import {debounceTime} from "rxjs/operators";
 import {CarsService} from "../../../services/cars.service";
 import {AuthService} from "../../../services/user/auth.service";
 import {AlertService} from "../../../services/alert.service";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-neue-anfrage',
@@ -28,8 +29,15 @@ export class NeueAnfrageComponent implements OnInit {
 
 
 
-  constructor(public activeModal: NgbActiveModal, private carsService: CarsService, private authService: AuthService, private alertService: AlertService) {
+  constructor(public activeModal: NgbActiveModal,private afs:AngularFirestore) {
 
+  }
+
+
+
+
+  createAnfrage(a:any){
+    this.afs.collection("anfragen").add(a);
   }
 
   setCar(car: any){

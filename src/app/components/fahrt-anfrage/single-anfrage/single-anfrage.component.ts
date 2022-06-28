@@ -10,6 +10,10 @@ export class SingleAnfrageComponent implements OnInit {
 
   @Input() anfrage: any;
 
+  isDate(potentialDate: any){
+    return potentialDate instanceof Date;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

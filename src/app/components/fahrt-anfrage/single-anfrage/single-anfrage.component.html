@@ -3,16 +3,15 @@
     <div>
       <div class="row">
         <div class="col-md-3">
-          <h6>{{anfrage.wohin}}</h6>
-          <h6 >12uhr00</h6>
-          <ng-template >
-            <h6>hhhhsh</h6>
+          <h6>{{anfrage.wo}}</h6>
+          <h6 *ngIf="isDate(anfrage.abfahrt) else abfahrtNoPipe">{{anfrage.abfahrt |  date: 'medium'}}</h6>
+          <ng-template  #abfahrtNoPipe >
+            <h6>{{anfrage.abfahrt}}</h6>
           </ng-template>
           <p class="name">
             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="50">
           </p>
-          <h6 >user.displayName</h6>
-          <p>user.forname user.surname</p>
+          <h6 >{{anfrage.name}}e</h6>
           <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
 
         </div>
@@ -20,17 +19,17 @@
           <i class="fa-solid fa-arrow-right"></i>
         </div>
         <div class="col-md-4">
-          <h6>Frankfurt</h6>
-          <h6 >12uhr</h6>
+          <h6>{{anfrage.wohin}}</h6>
+          <h6 *ngIf="isDate(anfrage.ankunft) else ankunftNoPipe">{{anfrage.ankunft |  date: 'medium'}}</h6>
           <ng-template #ankunftNoPipe>
-            <h6>13uhr00</h6>
+            <h6>{{anfrage.ankunft}}</h6>
           </ng-template>
           <br/>
           <div class="card" >
             <div class="card-body">
-              <h6>Plätze: 2</h6>
-              <h6>Auto: Toyota</h6>
-              <h6>Kofferraum: 12KG</h6>
+              <h6>Plätze: {{anfrage.platz}}</h6>
+              <h6>Auto:  {{anfrage.auto}}</h6>
+              <h6>Gepack:  {{anfrage.gepack}}</h6>
             </div>
           </div>
         </div>
