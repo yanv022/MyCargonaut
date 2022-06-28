@@ -12,8 +12,8 @@
   </div>
   <div class="row" >
     <ng-container>
-      <div class="col-sm-6 fahrtList">
-        <app-single-anfrage></app-single-anfrage>
+      <div class="col-sm-6 fahrtList" *ngFor="let anfrage of anfragen">
+        <app-single-anfrage [anfrage]="anfrage"></app-single-anfrage>
       </div>
     </ng-container>
   </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-single-anfrage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleAnfrageComponent implements OnInit {
 
+  @Input() anfrage: any;
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
