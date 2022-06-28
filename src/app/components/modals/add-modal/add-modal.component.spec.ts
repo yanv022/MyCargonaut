@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertComponent } from './alert.component';
+import { AddModalComponent } from 'src/app/components/modals/add-modal/add-modal.component';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('AddModalComponent', () => {
+  let component: AddModalComponent;
+  let fixture: ComponentFixture<AddModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ AddModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(AddModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

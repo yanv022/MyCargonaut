@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddModalComponent } from 'src/app/components/add-modal/add-modal.component';
+import { AcceptModalComponent } from './accept-modal.component';
 
-describe('AddModalComponent', () => {
-  let component: AddModalComponent;
-  let fixture: ComponentFixture<AddModalComponent>;
+describe('AcceptModalComponent', () => {
+  let component: AcceptModalComponent;
+  let fixture: ComponentFixture<AcceptModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddModalComponent ]
+      declarations: [ AcceptModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddModalComponent);
+    fixture = TestBed.createComponent(AcceptModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

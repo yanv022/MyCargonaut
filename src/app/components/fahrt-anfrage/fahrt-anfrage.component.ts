@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FahrtenService} from "../../services/fahrten.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FahrtSucheComponent} from "../fahrt-list/fahrt-suche/fahrt-suche.component";
+import {AnfragenService} from "src/app/services/anfragen.service";
+import {HelpService} from "src/app/services/help.service";
 
 @Component({
   selector: 'app-fahrt-anfrage',
@@ -12,16 +14,20 @@ export class FahrtAnfrageComponent implements OnInit {
 
   requests!: any;
 
-  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal) {
+  constructor(public anfragenService: AnfragenService, public modalService: NgbModal, private helperService: HelpService,) {
     this.getData();
-    this.requests = [{wo: 'irgedwo', wohin: 'egal', ankunft: new Date(), abfahrt: new Date(), title: 'ich suche nichts'}]
   }
 
   ngOnInit(): void {
   }
 
   async getData() {
-
+    await this.anfragenService.getAllRequests().forEach((requestDocuments) => {
+      let requests = this.helperService.firebaseDateToNormalDate(requestDocuments, ["ankunft", "abfahrt"]);
+      this.requests = requests.sort(function(a: { abfahrt: any; }, b: { abfahrt: any; }){
+        return a.abfahrt - b.abfahrt;
+      });
+      })
   }
 
 
@@ -30,6 +36,7 @@ export class FahrtAnfrageComponent implements OnInit {
   }
 
   newRequest() {
-
+    this.anfragenService.newRequestModal();
   }
+
 }

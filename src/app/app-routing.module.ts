@@ -11,7 +11,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {AuthGuard} from "./shared/guard/auth.guard";
 import {VerifyEmailComponent} from "./components/verify-email/verify-email.component";
-import { AddModalComponent } from './components/add-modal/add-modal.component';
+import { AddModalComponent } from './components/modals/add-modal/add-modal.component';
 
 const routes: Routes = [
   {path: 'profil',component: ProfilComponent},

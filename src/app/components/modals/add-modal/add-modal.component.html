@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Neue Fahrt hinzufügen</h4>
+    <h4 class="modal-title">{{name}}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
@@ -31,6 +31,7 @@
     <ngb-timepicker id="Atime" [(ngModel)]="timeAnkunft" style="zoom:0.8"></ngb-timepicker>
     <label for="description">Beschreibung</label>
     <input id="description" type="text" class="form-control" [(ngModel)]="description"/>
+    <ng-container *ngIf="indicator === 'fahrt'">
     <label for="car">Auto</label>
     <br/>
     <div id="car" ngbDropdown class="d-inline-block">
@@ -40,6 +41,9 @@
         </div>
     </div>
     <h5 *ngIf="selectedCar">{{selectedCar.brand}} {{selectedCar.model}}</h5>
+    </ng-container>
+    <label for="price">Preis</label>
+    <input id="price" type="number" class="form-control" [(ngModel)]="price"/>
 </div>
 <div class="modal-footer">
     <button type="submit" class="btn btn btn-success" (click)="submitData()">Hinzufügen</button>

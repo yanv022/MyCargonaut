@@ -18,17 +18,19 @@ import {HttpClientModule} from "@angular/common/http";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { AddModalComponent } from './components/add-modal/add-modal.component';
+import { AddModalComponent } from './components/modals/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
-import { AlertComponent } from './components/alert/alert.component';
+import { AlertComponent } from './components/modals/alert/alert.component';
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
 import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
+import { AcceptModalComponent } from './components/modals/accept-modal/accept-modal.component';
+import { RequestAcceptModalComponent } from './components/modals/request-accept-modal/request-accept-modal.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrag
     HomepageComponent,
     FooterComponent,
     FahrtAnfrageComponent,
-    SingleAnfrageComponent
+    SingleAnfrageComponent,
+    AcceptModalComponent,
+    RequestAcceptModalComponent,
   ],
   imports: [
     BrowserModule,
