@@ -8,12 +8,8 @@
           <h4 class="float-center card-title mb-4 mt-1 schriffe " style="text-align: center">Registrieren</h4>
           <form>
             <div class="form-group">
-              <label class="schriffe">Nachname:</label>
-              <input class="form-control "  type="text" style="margin-bottom: 8px">
-            </div>
-            <div class="form-group">
-              <label class="schriffe">Vorname</label>
-              <input class="form-control"  type="text" style="margin-bottom: 8px">
+              <label class="schriffe">Name</label>
+              <input class="form-control"  type="text" #disName style="margin-bottom: 8px ">
             </div>
             <div class="form-group">
               <label>Username</label>
@@ -21,13 +17,7 @@
             </div>
             <div class="form-group">
               <label>Geburststag</label>
-              <input  class="form-control"  type="date" #usergb>
-              <label class="schriffe">Username</label>
-              <input class="form-control"  type="text"style="margin-bottom: 8px" >
-            </div>
-            <div class="form-group">
-              <label class="schriffe">Geburststag</label>
-              <input  class="form-control"  type="date"style="margin-bottom: 8px" >
+              <input  class="form-control"  type="date" id="date" #usergb>
             </div>
             <div class="form-group">
               <label class="schriffe">Email</label>
@@ -38,7 +28,7 @@
               <input class="form-control" type="password" #userPwd required style="margin-bottom: 8px">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block form-control" style="background-color: #2B7A78; margin-top: 30px" (click)="setData(userName.value,userEmail.value, userPwd.value)">Registrieren</button>
+              <button type="submit" class="btn btn-primary btn-block form-control" style="background-color: #2B7A78; margin-top: 30px" (click)="registrieren(disName.value,userName.value,usergb.value, userEmail.value, userPwd.value)">Registrieren</button>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block form-control" style="background-color: #2B7A78 ;margin-top: 12px" (click)="authService.GoogleAuth()">Mit Google einlogen</button>

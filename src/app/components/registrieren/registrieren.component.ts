@@ -16,9 +16,13 @@ export class RegistrierenComponent implements OnInit {
   }
   setData( name:string, email:string, passwort: string){
     this.authService.SignUp(email,passwort);
-
     //this.userService.setname(name);
+  }
 
+  registrieren(name:string, username : string, gbDatum:string,  email:string, passwort: string){
+    this.authService.setauth(name ,username , new Date(gbDatum))
+    console.log(new Date(gbDatum));
+    this.authService.SignUp(email,passwort);
   }
 
 }
