@@ -12,6 +12,7 @@ import {CarsService} from "src/app/services/cars.service";
 import {AlertService} from "src/app/services/alert.service";
 import {FahrtenService} from "src/app/services/fahrten.service";
 import {PaymentService} from "src/app/services/payment.service";
+import {UserDataService} from "src/app/services/user-data.service";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class AnfragenService {
   protected constructor(private afs: AngularFirestore, private modalService: NgbModal,
                         private authService: AuthService, private helperService: HelpService,
                         private carsService: CarsService, private alertService: AlertService,
-                        private fahrtenService: FahrtenService, private paymentService: PaymentService) {
+                        private fahrtenService: FahrtenService, private paymentService: PaymentService,
+                        private userDataService: UserDataService) {
     this.requestCollection = this.afs.collection('anfragen');
     this.getAllRequests();
   }
@@ -32,7 +34,7 @@ export class AnfragenService {
     return this.afs
         .collection(this.requestCollection.ref, (ref) =>
             ref.where('accepted', '==', false)
-        ).valueChanges()
+        ).valueChanges({ idField: 'reqId' })
   }
 
   public newRequestModal() {
@@ -89,17 +91,32 @@ export class AnfragenService {
       const modalRef = this.modalService.open(RequestAcceptModalComponent);
       modalRef.componentInstance.data = data;
       modalRef.componentInstance.cars = userCars;
-      modalRef.componentInstance.submit.subscribe((car: any)=>{
-        let request = this.requestCache;
-        this.requestCache = undefined;
-        let id = this.afs.createId()
-        const data = {abfahrt: request.abfahrt, wo: request.wo, ankunft: request.ankunft,
-          wohin: request.wohin, name: request.name, creatorId: uid, autoId: car, price: request.price,
-          accepted: true, description: request.description, passengerId: request.creatorId}
-        this.fahrtenService.addRide(data, id);
-        this.helperService.addRideForPassengerAndDriver(uid, request.creatorId, uid);
-        if(request.price > 0){
-          this.paymentService.pay();
+      modalRef.componentInstance.submit.subscribe(async(car: any)=>{
+        try {
+          let request = this.requestCache;
+          this.requestCache = undefined;
+          if (request.price > 0) {
+            let paymentResult = await this.paymentService.pay(uid, request.creatorId, request.price);
+            if(typeof paymentResult == 'string') {
+              await Promise.reject(paymentResult);
+            }
+          }
+          let id = this.afs.createId()
+          const data = {
+            abfahrt: request.abfahrt, wo: request.wo, ankunft: request.ankunft,
+            wohin: request.wohin, name: request.name, creatorId: uid, autoId: car, price: request.price,
+            accepted: true, description: request.description, passengerId: request.creatorId
+          }
+          this.fahrtenService.addRide(data, id).then(()=>{
+            this.helperService.addRideForPassengerAndDriver(uid, request.creatorId, uid);
+          }).then(()=>{
+            this.requestCollection.doc(request.reqId).update({
+              accepted: true
+            })
+          })
+        }
+        catch (e) {
+          this.alertService.newAlert("Ersteller der Anfrage hat leider " + e, 'danger')
         }
       })
     } catch (e) {

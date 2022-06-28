@@ -4,6 +4,9 @@ import {CarsService} from "src/app/services/cars.service";
 import {combineLatest, map, of, switchMap} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddModalComponent} from "src/app/components/modals/add-modal/add-modal.component";
+import {BuchenComponent} from "src/app/components/fahrt-list/buchen/buchen.component";
+import {AuthService} from "src/app/services/user/auth.service";
+import {HelpService} from "src/app/services/help.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,8 @@ export class FahrtenService {
 
 
 
-  protected constructor(private afs: AngularFirestore, private carsService: CarsService, private modalService: NgbModal) {
+  protected constructor(private afs: AngularFirestore, private carsService: CarsService, private modalService: NgbModal,
+                        private authService: AuthService, private helperService: HelpService) {
     this.fahrtenCollection = this.afs.collection('fahrten');
     this.getAllRides();
   }
@@ -52,15 +56,26 @@ export class FahrtenService {
         })
     }
 
-    public addRide(ride: any, id?: any){
+    public async addRide(ride: any, id?: any){
+      console.log(ride, id);
       if(id == undefined) {
           id = this.afs.createId()
       }
-      this.fahrtenCollection.doc(id).set(
+      await this.fahrtenCollection.doc(id).set(
           ride
       )
     }
 
 
-
+    acceptRide(fahrt: any) {
+        const modalRef = this.modalService.open(BuchenComponent);
+        modalRef.componentInstance.data = fahrt;
+        modalRef.result.then(async() => {
+            const uid = await this.authService.userData._delegate.uid;
+            //TODO: WARUM IST SCHON EINE PASSENGER ID IN DATABASE? LOGIK ÜBERDENKEN
+            //await this.helperService.addRideForPassengerAndDriver(fahrt.creatorId, uid, )
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
 }

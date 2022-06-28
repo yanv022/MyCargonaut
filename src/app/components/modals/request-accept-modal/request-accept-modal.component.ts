@@ -20,7 +20,7 @@ export class RequestAcceptModalComponent implements OnInit {
 
   accept() {
     if(this.selectedCar != undefined) {
-      this.submit.emit(this.selectedCar);
+      this.submit.emit(this.selectedCar.autoId);
       this.alertService.newAlert('Sie haben die Fahrt erfolgreich angenommen', 'success');
       this.activeModal.dismiss();
       return;

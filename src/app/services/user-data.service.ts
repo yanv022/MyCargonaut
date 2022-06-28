@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
 import {arrayUnion} from "@angular/fire/firestore";
 
 @Injectable({
@@ -17,14 +19,15 @@ export class UserDataService {
     return this.userCollection.doc(userId).valueChanges();
   }
 
-  addDriverOfRide(userId: any, rideId: any){
-    this.userCollection.ref.doc(userId).update({
-      fahrtenAlsFahrer: arrayUnion(rideId)
-    })
-  }
 
-  addPassengerOfRide(userId: any, rideId: any){
-    this.userCollection.ref.doc(userId).update({
+
+  async addDriverOfRide(userId: any, rideId: any){
+    await this.afs.collection('users').doc(userId).update({
+      fahrtenAlsFahrer: arrayUnion(rideId)
+    })  }
+
+  async addPassengerOfRide(userId: any, rideId: any){
+    await this.afs.collection('users').doc(userId).update({
       fahrtenAlsMitfahrer: arrayUnion(rideId)
     })
   }

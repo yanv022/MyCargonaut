@@ -3,6 +3,7 @@ import { FahrtenService } from 'src/app/services/fahrten.service';
 import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {HelpService} from "src/app/services/help.service";
+import {PaymentService} from "src/app/services/payment.service";
 
 @Component({
   selector: 'app-fahrt-list',
@@ -14,7 +15,8 @@ export class FahrtListComponent implements OnInit {
   public fahrten!: any;
   date:Date=new Date();
 
-  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal, private helperService: HelpService) {
+  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal, private helperService: HelpService,
+              public paymentService: PaymentService) {
    this.getData();
   }
 

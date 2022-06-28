@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
@@ -11,8 +11,9 @@ import {set} from "@angular/fire/database";
   styleUrls: ['./buchen.component.scss']
 })
 export class BuchenComponent implements OnInit {
-
-   isAllert=false;
+  @Input() data: any;
+  //TODO: IMPLEMENT FAHRT DATA INTO MODAL TEXT
+  isAllert=false;
 
   constructor(public activeModal: NgbActiveModal) { }
 

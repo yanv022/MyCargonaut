@@ -92,7 +92,8 @@ export class AddModalComponent implements OnInit {
        }
        let dataToSubmit;
        if(this.indicator === 'fahrt') {
-         if (this.title != undefined && this.where.length != undefined && this.to.length != undefined && this.description != undefined && this.selectedCar != undefined) {
+         if (this.title != undefined && this.where != undefined && this.to != undefined && this.description != undefined && this.selectedCar != undefined &&
+             this.title.trim().length > 0 && this.where.trim().length > 0 && this.to.trim().length > 0 && this.description.trim().length > 0) {
            if (this.price === undefined) {
              this.price = 0;
            }
@@ -106,7 +107,11 @@ export class AddModalComponent implements OnInit {
            return;
          }
        } else if (this.indicator === 'anfrage'){
-           if (this.title != undefined && this.price != undefined && this.where.length != undefined && this.to.length != undefined && this.description != undefined) {
+           if (this.title != undefined && this.where != undefined && this.to != undefined && this.description != undefined &&
+               this.title.trim().length > 0 && this.price.trim().length > 0 && this.where.trim().length > 0 && this.to.trim().length > 0 && this.description.trim().length > 0) {
+             if (this.price === undefined) {
+               this.price = 0;
+             }
              dataToSubmit = {
                abfahrt: timestamps.timestampAbfahrt, wo: this.where, ankunft: timestamps.timestampAnkunft,
                wohin: this.to, name: this.title, creatorId: uid, accepted: false, description: this.description,
