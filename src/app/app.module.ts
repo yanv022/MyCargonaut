@@ -32,6 +32,7 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
 import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
 import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
 import { NeueAnfrageComponent } from './components/fahrt-anfrage/neue-anfrage/neue-anfrage.component';
+import { EditProfilComponent } from './components/profil/edit-profil/edit-profil.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { NeueAnfrageComponent } from './components/fahrt-anfrage/neue-anfrage/ne
     FahrtAnfrageComponent,
     AnfrageSucheComponent,
     SingleAnfrageComponent,
-    NeueAnfrageComponent
+    NeueAnfrageComponent,
+    EditProfilComponent
   ],
   imports: [
     BrowserModule,
