@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
 import {UserDataService} from "src/app/services/user/user-data.service";
 import {CarsService} from "src/app/services/cars.service";
+import {EditProfilComponent} from "../edit-profil/edit-profil.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -21,7 +23,9 @@ export class ProfilComponent implements OnInit {
 
 
   constructor(public authService: AuthService,
-              public userDataservice: UserDataService, private carsService: CarsService)
+              public userDataservice: UserDataService,
+              private carsService: CarsService,
+              private modalService: NgbModal)
   {
     this.getuserdaten()
     console.log('das le cons = '+ this.user);
@@ -66,5 +70,11 @@ export class ProfilComponent implements OnInit {
 
   async addCar() {
     await this.carsService.addCarModal();
+  }
+  openUpdateModal(): void {
+    this.modalService.open(EditProfilComponent, {
+      animation: true,
+      centered: true
+    });
   }
 }
