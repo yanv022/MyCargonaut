@@ -7,12 +7,18 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import {User} from "../../model/interfaces/user";
+import {MyUser} from "../../model/interfaces/myUser";
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  localusername : string ='';
+  localgbdatum : Date = new Date('');
+  localGeld : number = 500;
+  localdisname : string = '';
+  localphotoURL : string = '';
+
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -32,6 +38,11 @@ export class AuthService {
       }
     });
   }
+  setauth( disname:string, username : string, gbDatum:Date){
+    this.localusername = username;
+    this.localgbdatum = gbDatum;
+    this.localdisname = disname;
+  }
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -41,20 +52,24 @@ export class AuthService {
           this.router.navigate(['profil']);
         });
         this.SetUserData(result.user);
+        console.log('test')
+        console.log('user', result)
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
   // Sign up with email/password
+  /* die daten mussen voher in der registrierung componente gesetz werden*/
   SignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
+        //this.SendVerificationMail();
+        //this.SetUserData(result.user);
+        this.SetUserDataRegistrierung(result.user)
       })
       .catch((error) => {
         window.alert(error.message);
@@ -113,12 +128,33 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
+    const userData: MyUser = {
       uid: user.uid,
+      username :'leer',
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      displayName: 'leer',
+      photoURL: 'leer',
+      dayOfBirth: new Date(""),
       emailVerified: user.emailVerified,
+      geld : this.localGeld
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
+  }
+  SetUserDataRegistrierung(user: any, ) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    const userData: MyUser = {
+      uid: user.uid,
+      username :this.localusername,
+      email: user.email,
+      displayName: this.localdisname,
+      photoURL: this.localphotoURL,
+      dayOfBirth: this.localgbdatum,
+      emailVerified: user.emailVerified,
+      geld : this.localGeld
     };
     return userRef.set(userData, {
       merge: true,
@@ -131,7 +167,15 @@ export class AuthService {
       this.router.navigate(['login']);
     });
   }
-
+  /*async getAllUser(): Promise<User[]> {
+    return this.userData.get().toPromise().then(snapshot =>
+      snapshot.docs.map(doc => {
+        const user = doc.data();
+        user.dId = doc.id;
+        return user;
+      })
+    );
+  }*/
   /** FOR APP MODULE INIT
    *  - dient dazu um den Authentifizierungsservice beim erstmaligen laden der Seite direkt zu initialisieren.
    * */
