@@ -19,7 +19,4 @@ describe('AnfrageSucheComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

@@ -19,7 +19,4 @@ describe('SingleFahrtComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
