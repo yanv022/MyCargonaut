@@ -23,7 +23,6 @@
   padding-top: 5px;
 }
 .amount{
-  margin-left: 20px;
   padding-bottom: 30px;
 }
 
@@ -40,4 +39,22 @@
 .btn{
   background-color: #DEF2F1 !important;
   color: black;
+  margin-top: 40px;
+}
+.marge{
+  padding-left: 30px;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .btnbuchen{
+    font-size: 10px;
+  }
+  .amount{
+    padding-top: 35px;
+  }
+
+  .btn{
+    margin-top: 0px;
+  }
 }

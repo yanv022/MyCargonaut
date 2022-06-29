@@ -31,6 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.component';
 import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
 import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
+import { NeueAnfrageComponent } from './components/fahrt-anfrage/neue-anfrage/neue-anfrage.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrag
     FooterComponent,
     FahrtAnfrageComponent,
     AnfrageSucheComponent,
-    SingleAnfrageComponent
+    SingleAnfrageComponent,
+    NeueAnfrageComponent
   ],
   imports: [
     BrowserModule,

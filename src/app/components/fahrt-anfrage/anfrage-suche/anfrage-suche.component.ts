@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+
 import {CarsService} from "../../../services/cars.service";
 
 @Component({
@@ -19,7 +20,7 @@ export class AnfrageSucheComponent implements OnInit {
   selectedCar!: any;
   @Output() submit = new EventEmitter<{}>();
 
-  constructor(private activeModal: NgbActiveModal,private carsService: CarsService) {
+  constructor(public activeModal: NgbActiveModal,private carsService: CarsService) {
     this.cars = [{brand: "Ford", color: "blau", model:"Focus", seats:"5", storageInKg: "500", type:"combi", autoId: 'kRO6mCbnb5hScGXGThJt'},
       {brand: "Opel", color: "grün", model:"Corsa", seats:"3", storageInKg: "200", type:"combi", autoId: 'kRO6mCbnb5hScGXGThJt'}
     ]

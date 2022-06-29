@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4">
       <p>
-        <button type="button" style="margin-top:20px" class="btn btn-primary btn-sm -pull-right" (click)="newRide()"><i class="fa fa-plus" aria-hidden="true"></i> Neue Anfrage
+        <button type="button" style="margin-top:20px" class="btn btn-primary btn-sm -pull-right" (click)="newAnfrage()"><i class="fa fa-plus" aria-hidden="true"></i> Neue Anfrage
         </button>
         <button type="button" style="margin-left: 12px; margin-top:20px" class="btn btn-primary btn-sm -pull-right" (click)="openModal()" ><i class="fa fa-search" aria-hidden="true"></i>
           Anfrage suchen
@@ -11,9 +11,9 @@
     </div>
   </div>
   <div class="row" >
-    <ng-container *ngIf="fahrten">
-      <div class="col-sm-6 fahrtList" *ngFor="let fahrt of fahrten" >
-        <app-single-fahrt [fahrt]="fahrt"></app-single-fahrt>
+    <ng-container>
+      <div class="col-sm-6 fahrtList" *ngFor="let anfrage of anfragen">
+        <app-single-anfrage [anfrage]="anfrage"></app-single-anfrage>
       </div>
     </ng-container>
   </div>

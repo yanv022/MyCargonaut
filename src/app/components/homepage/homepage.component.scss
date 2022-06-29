@@ -1,15 +1,39 @@
-body,
-html {
+.test {
+  background-image: url("https://i.pinimg.com/originals/d3/ab/7e/d3ab7e69dd4ed4daca74ee06633cc084.jpg");
   height: 100%;
+  width: 100%;
 }
 
-.bg {
-  /* The image used */
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/c2/Rihanna_Fenty_2018.png");
-  /* Full height */
-  height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+span{
+  font-size:15px;
 }
+a{
+  text-decoration:none;
+  color: #0062cc;
+  border-bottom:2px solid #0062cc;
+}
+.box{
+  padding:60px 0px;
+}
+
+.box-part{
+  background: #005b52;
+  border-radius:0;
+  padding:60px 10px;
+  margin:30px 0px;
+}
+.text{
+  margin:20px 0px;
+}
+.container{
+  padding-bottom: 5%;
+}
+.fa{
+  color:#4183D7;
+}
+@media only screen and (max-width: 600px) {
+  .container{
+    padding-bottom: 25%;
+  }
+}
+
