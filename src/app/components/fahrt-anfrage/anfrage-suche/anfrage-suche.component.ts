@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
-import {CarsService} from "../../../services/cars.service";
+import {CarsService} from "src/app/services/cars.service";
 
 @Component({
   selector: 'app-anfrage-suche',

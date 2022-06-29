@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FahrtenService} from "../../services/fahrten.service";
+import { Component } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AnfragenService} from "src/app/services/anfragen.service";
 import {HelpService} from "src/app/services/help.service";
+import {AnfrageSucheComponent} from "src/app/components/fahrt-anfrage/anfrage-suche/anfrage-suche.component";
 
 
 @Component({
@@ -10,7 +10,7 @@ import {HelpService} from "src/app/services/help.service";
   templateUrl: './fahrt-anfrage.component.html',
   styleUrls: ['./fahrt-anfrage.component.scss']
 })
-export class FahrtAnfrageComponent implements OnInit {
+export class FahrtAnfrageComponent {
 
   requests!: any;
 
@@ -35,7 +35,6 @@ export class FahrtAnfrageComponent implements OnInit {
   }
 
   openModal() {
-    console.log(this.anfragen);
     //ModalComponent is component name where modal is declare
     const modalRef = this.modalService.open(AnfrageSucheComponent);
     modalRef.result.then((result) => {

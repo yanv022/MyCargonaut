@@ -61,7 +61,6 @@ import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/
     AcceptModalComponent,
     RequestAcceptModalComponent,
     AnfrageSucheComponent,
-
   ],
   imports: [
     BrowserModule,
