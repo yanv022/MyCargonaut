@@ -3,7 +3,7 @@ import {AlertService} from "src/app/services/alert.service";
 import {CarsService} from "src/app/services/cars.service";
 import {NotFoundError} from "rxjs";
 import firebase from 'firebase/compat';
-import { UserDataService } from './user-data.service';
+import { UserDataService } from 'src/app/services/user/user-data.service';
 import {FahrtenService} from "src/app/services/fahrten.service";
 
 @Injectable({

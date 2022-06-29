@@ -20,27 +20,26 @@ export class PaymentService {
                 if (!payDoc.exists) {
                     throw "User does not exist!";
                 }
-                let tokens = payDoc.data()?.['tokens'];
+                let tokens = payDoc.data()?.['Geld'];
                 const newAmount = tokens - amount;
                 if(!tokens || newAmount < 0) {
                     throw "Kein Geld in der Tasche";
                 }
-                transaction.update(payerRef, {tokens: newAmount});
+                transaction.update(payerRef, {Geld: newAmount});
             }).then(async ()=> {
                 await this.afs.firestore.runTransaction(async (transaction) => {
                     const recDoc = await transaction.get(receiverRef);
-                    console.log("hey");
                     if (!recDoc.exists) {
                         throw "User does not exist!";
                     }
                     let newAmount;
-                    let tokens = recDoc.data()?.['tokens'];
+                    let tokens = recDoc.data()?.['Geld'];
                     if(!tokens) {
                         newAmount = amount;
                     } else {
                         newAmount = tokens + amount;
                     }
-                    transaction.update(receiverRef, { tokens: newAmount });
+                    transaction.update(receiverRef, { Geld: newAmount });
                 })
             }).then(()=>{
                 console.log('All Transaction Successful');

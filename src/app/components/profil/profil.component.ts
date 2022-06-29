@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
-import {UserDataService} from "src/app/services/user-data.service";
+import {UserDataService} from "src/app/services/user/user-data.service";
+import {CarsService} from "src/app/services/cars.service";
 
 
 @Component({
@@ -9,7 +10,6 @@ import {UserDataService} from "src/app/services/user-data.service";
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent implements OnInit {
-
   disname :string = "MAx Mustermann";
   vorname :string = "Max";
   username :string | undefined = "vide";
@@ -21,7 +21,7 @@ export class ProfilComponent implements OnInit {
 
 
   constructor(public authService: AuthService,
-              public userDataservice: UserDataService)
+              public userDataservice: UserDataService, private carsService: CarsService)
   {
     this.getuserdaten()
     console.log('das le cons = '+ this.user);
@@ -40,7 +40,7 @@ export class ProfilComponent implements OnInit {
   }
   async getuserdaten(){
     const id = this.authService.userData.uid;
-    this.userDataservice.getUserDataById_Observable(id).subscribe((data)=>{
+    await this.userDataservice.getUserDataById_Observable(id).subscribe((data)=>{
       this.user = data;
       this.username = data?.username;
       console.log('halo');
@@ -64,4 +64,7 @@ export class ProfilComponent implements OnInit {
     }
   }
 
+  async addCar() {
+    await this.carsService.addCarModal();
+  }
 }

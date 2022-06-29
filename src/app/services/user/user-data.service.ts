@@ -9,8 +9,8 @@ import {Observable} from "rxjs";
 import firebase from "firebase/compat/app";
 import FieldValue = firebase.firestore.FieldValue;
 import {arrayUnion} from "@angular/fire/firestore";
-import {MyUser} from "../model/interfaces/myUser";
-import {AuthService} from "./user/auth.service";
+import {MyUser} from "src/app/model/interfaces/myUser";
+import {AuthService} from "src/app/services/user/auth.service";
 import {snapshotChanges} from "@angular/fire/compat/database";
 import {onSnapshot} from "@angular/fire/firestore";
 
@@ -31,7 +31,7 @@ export class UserDataService implements OnInit {
   ngOnInit(): void {
   }
   getUserDataById_Observable(userId: string): Observable<MyUser | undefined>{
-    return this.userCollection.doc(userId).valueChanges();
+    return this.userCollection.doc(userId).valueChanges({idField: 'uid'});
   }
 
 
