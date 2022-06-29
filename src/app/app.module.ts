@@ -20,6 +20,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AddModalComponent } from './components/modals/add-modal/add-modal.component';
 import {FormsModule} from "@angular/forms";
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
 import {AuthService} from "./services/user/auth.service";
 import { AlertComponent } from './components/modals/alert/alert.component';
@@ -31,6 +32,8 @@ import { FahrtAnfrageComponent } from './components/fahrt-anfrage/fahrt-anfrage.
 import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
 import { AcceptModalComponent } from './components/modals/accept-modal/accept-modal.component';
 import { RequestAcceptModalComponent } from './components/modals/request-accept-modal/request-accept-modal.component';
+import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
+
 
 
 @NgModule({
@@ -46,6 +49,7 @@ import { RequestAcceptModalComponent } from './components/modals/request-accept-
     DashboardComponent,
     VerifyEmailComponent,
     AddModalComponent,
+    ForgotPasswordComponent,
     SingleFahrtComponent,
     AlertComponent,
     FahrtSucheComponent,
@@ -56,6 +60,8 @@ import { RequestAcceptModalComponent } from './components/modals/request-accept-
     SingleAnfrageComponent,
     AcceptModalComponent,
     RequestAcceptModalComponent,
+    AnfrageSucheComponent,
+
   ],
   imports: [
     BrowserModule,

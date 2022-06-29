@@ -12,13 +12,12 @@
               <input name="Email" class="form-control" id="Email" placeholder="Email Address"  type="email" #Email required>
             </div>
             <div class="form-group">
-              <a class="float-end" routerLink="registrieren">Forgot password?</a>
-              <br/>
-              <label  class="schriffe">Password</label>
-              <input class="form-control" type="password" id="password" placeholder="Password" #password>
+              <!--a class="float-end" routerLink="registrieren">Forgot password?</a-->
+              <label  class="schriffe mt-3">Password</label>
+              <input class="form-control" type="password" id="password" placeholder="Password" #password required>
             </div><br/>
             <div class="form-group">
-              <button class="btn btn-primary btn-block form-control" style="background-color: #2B7A78" (click)="authService.SignUp(Email.value, password.value)"> Login  </button>
+              <button class="btn btn-primary btn-block form-control" style="background-color: #2B7A78" (click)="authService.SignIn(Email.value, password.value)"> Login  </button>
             </div>
             <div class="form-group">
               <button  class="btn btn-primary btn-block form-control" style="background-color: #2B7A78 ;margin-top: 12px" (click)="authService.GoogleAuth()"> Login  with Google </button>

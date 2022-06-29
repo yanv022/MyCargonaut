@@ -74,6 +74,7 @@ class Profil {
   profilbild
   email
   passwort
+  bewertung
 }
 
 Session *-right- Profil
@@ -88,12 +89,12 @@ Status -right- Session
 
 legend right
   | <img src="../../src/assets/Export/150×45/resizecar_android_MyCargonautmdpi.png"> |= \n\n »MyCargonaut« |
-  | Produktion | [[https://yanv022.github.io/MyCargonaut/]] |
+  | Produktion | [[https://cargonaut-a2624.web.app/]] |
   | Repository | [[https://github.com/yanv022/MyCargonaut]] |
   | UML-Tool| PlantUML v1.2019.5|
   | Ersteller| Yann Abel Ndemmeze Vougue|
   | Mail| yann.abel.ndemmeze.vougue@mni.thm.de |
-  | Letzte Änderung| 31.05.2022 |
+  | Letzte Änderung| 21.06.2022 |
 end legend
 
 @enduml

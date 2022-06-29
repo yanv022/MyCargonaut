@@ -4,6 +4,7 @@ import {AnfragenService} from "src/app/services/anfragen.service";
 import { AuthService } from 'src/app/services/user/auth.service';
 import {AlertService} from "src/app/services/alert.service";
 
+
 @Component({
   selector: 'app-single-anfrage',
   templateUrl: './single-anfrage.component.html',
@@ -31,5 +32,6 @@ export class SingleAnfrageComponent implements OnInit {
 
     }
     }
+
 
 }

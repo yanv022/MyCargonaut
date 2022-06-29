@@ -2,7 +2,7 @@
     <div class="card-body">
         <div>
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3">
                     <h6>{{fahrt.wo}}</h6>
                     <h6 *ngIf="helperService.isDate(fahrt.abfahrt) else abfahrtNoPipe">{{fahrt.abfahrt |  date: 'medium'}}</h6>
                     <ng-template #abfahrtNoPipe>
@@ -16,10 +16,10 @@
                     <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
 
                 </div>
-                <div class="col-1">
+                <div class="col-md-1">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <h6>{{fahrt.wohin}}</h6>
                     <h6 *ngIf="helperService.isDate(fahrt.ankunft) else ankunftNoPipe">{{fahrt.ankunft |  date: 'medium'}}</h6>
                     <ng-template #ankunftNoPipe>
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4" style="padding-left: 30px">
-                    <h5 class="amount">{{fahrt.price}} $</h5>
-                    <button type="button" class="btn buchen" (click)="buchen()"><h6>BUCHEN</h6></button>
+                <div class="col-md-4 marge" >
+                    <h5 class="amount">25$</h5>
+                    <button type="button" class="btn btn-outline-primary" (click)="buchen()"><h6 class="btnbuchen">BUCHEN</h6></button>
                 </div>
             </div>
         </div>

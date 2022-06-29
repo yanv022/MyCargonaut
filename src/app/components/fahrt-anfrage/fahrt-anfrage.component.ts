@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FahrtenService} from "../../services/fahrten.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {FahrtSucheComponent} from "../fahrt-list/fahrt-suche/fahrt-suche.component";
 import {AnfragenService} from "src/app/services/anfragen.service";
 import {HelpService} from "src/app/services/help.service";
+
 
 @Component({
   selector: 'app-fahrt-anfrage',
@@ -18,8 +18,8 @@ export class FahrtAnfrageComponent implements OnInit {
     this.getData();
   }
 
-  ngOnInit(): void {
-  }
+
+  
 
   async getData() {
     await this.anfragenService.getAllRequests().forEach((requestDocuments) => {
@@ -30,13 +30,20 @@ export class FahrtAnfrageComponent implements OnInit {
       })
   }
 
-
-  openModal() {
-
-  }
-
   newRequest() {
     this.anfragenService.newRequestModal();
+  }
+
+  openModal() {
+    console.log(this.anfragen);
+    //ModalComponent is component name where modal is declare
+    const modalRef = this.modalService.open(AnfrageSucheComponent);
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+
   }
 
 }

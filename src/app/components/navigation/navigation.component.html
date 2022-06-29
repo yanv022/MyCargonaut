@@ -5,13 +5,17 @@
     </p>
 
     <form class="d-flex input-group w-auto">
-        <a routerLink="homepage" routerLinkActive="active" class="nav-link navgGosse"><span>HOME</span></a>
+        <a routerLink="" routerLinkActive="active" class="nav-link navgGosse"><span>HOME</span></a>
         <a routerLink="fahrtList" routerLinkActive="active" class="nav-link navgGosse"><span>FAHRTEN</span></a>
         <a routerLink="fahrtAnfrage" routerLinkActive="active" class="nav-link navgGosse"><span>ANFRAGEN</span></a>
-        <a routerLink="profil" routerLinkActive="active" class="nav-link navgGosse" ><span><i class="fa fa-user" aria-hidden="true"></i> PROFIL</span></a>
-        <a routerLink="login" routerLinkActive="active" class="nav-link navgGosse" ><span><i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</span></a>
+        <a  routerLink="profil" routerLinkActive="active" class="nav-link navgGosse" ><span><i class="fa fa-user" aria-hidden="true"></i> PROFIL</span></a>
         <a routerLink="registrieren" routerLinkActive="active" class="nav-link navgGosse"><span><i class="fa fa-sign-in" aria-hidden="true"></i> REGISTRIEREN</span></a>
-
+        <div class="row" *ngIf ="authService.userData as user; else elseBlock ">
+          <a class="nav-link navgGosse" (click)="authService.SignOut()" > <i class="fas fa-sign-out-alt"></i>LOG OUT</a>
+        </div>
+        <ng-template  #elseBlock>
+           <a routerLink="login" routerLinkActive="active" class="nav-link navgGosse" ><span><i class="fa fa-sign-in" aria-hidden="true"></i>LOGIN</span></a>
+        </ng-template>
     </form>
   </div>
 </nav>

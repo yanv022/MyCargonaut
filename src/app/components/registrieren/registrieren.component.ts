@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-registrieren',
@@ -8,9 +9,20 @@ import {AuthService} from "../../services/user/auth.service";
 })
 export class RegistrierenComponent implements OnInit {
 
-  constructor( public authService: AuthService) { }
+  constructor( public authService: AuthService,
+               public userService: UserService) { }
 
   ngOnInit(): void {
+  }
+  setData( name:string, email:string, passwort: string){
+    this.authService.SignUp(email,passwort);
+    //this.userService.setname(name);
+  }
+
+  registrieren(name:string, username : string, gbDatum:string,  email:string, passwort: string){
+    this.authService.setauth(name ,username , new Date(gbDatum))
+    console.log(new Date(gbDatum));
+    this.authService.SignUp(email,passwort);
   }
 
 }

@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {CarsService} from "src/app/services/cars.service";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+
+import {CarsService} from "../../../services/cars.service";
 
 @Component({
-  selector: 'app-fahrt-suche',
-  templateUrl: './fahrt-suche.component.html',
-  styleUrls: ['./fahrt-suche.component.scss']
+  selector: 'app-anfrage-suche',
+  templateUrl: './anfrage-suche.component.html',
+  styleUrls: ['./anfrage-suche.component.scss']
 })
-export class FahrtSucheComponent implements OnInit {
+export class AnfrageSucheComponent implements OnInit {
   @Input() name: any;
   title!: string;
   where!: string;
