@@ -28,29 +28,22 @@ export class ProfilComponent implements OnInit {
               private modalService: NgbModal)
   {
     this.getuserdaten()
-    console.log('das le cons = '+ this.user);
   }
 
   ngOnInit(): void {
-    console.log("ng debut")
-    //this.setData();
-    this.photoURL = this.authService.userData.photoURL + '/assets/dummy-user.png';
-    console.log("ng fin")
   }
   setData(){
       this.disname = this.authService.userData.displayName;
       this.email = this.authService.userData.email;
       this.photoURL = this.authService.userData.photoURL + '/assets/dummy-user.png';
   }
-  async getuserdaten(){
-    const id = this.authService.userData.uid;
-    await this.userDataservice.getUserDataById_Observable(id).subscribe((data)=>{
-      this.user = data;
-      this.username = data?.username;
-      console.log('halo');
-      console.log(this.user);
-      console.log(data?.username);
-      console.log(this.user?.username);
+  getuserdaten(){
+    console.log('halo yann methode debut');
+    const user = this.authService.userData;
+    console.log('id = '+user.uid);
+    this.userDataservice.getUserDataById_Observable(user.uid).subscribe((data)=>{
+      console.log(data);
+      console.log('fin methodehalo');
     })
   }
 
