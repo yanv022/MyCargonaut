@@ -19,8 +19,9 @@ export class CarsService {
     return this.usersCollection.doc(userId).collection('cars').doc(carId).get();
   }
 
+
   getCarsOfUser(userId: string){
-    return this.usersCollection.doc(userId).collection('cars').valueChanges({ idField: 'autoId' });
+    return this.usersCollection.doc(userId).collection('cars').valueChanges({idField: 'autoId'});
   }
 
 }

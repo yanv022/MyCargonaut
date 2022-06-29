@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{name}} annehmen</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <h4 *ngIf="data.wohin && data.wo else basic">Sind sie sicher, dass Sie die Fahrt von {{data.wo}} nach {{data.wohin}} akzeptieren möchten?</h4>
+    <br/>
+    <h6 *ngIf="data.description">{{data.description}}</h6>
+    <h6 *ngIf="data.price && data.price > 0 else kostenlos">Sie bekommen {{data.price}} $ für diese Fahrt.</h6>
+    <ng-template #kostenlos>
+        <h6>Diese Fahrt ist kostenlos.</h6>
+    </ng-template>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn btn-success" (click)="accept()">Akzeptieren</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Close</button>
+</div>
+
+<ng-template #basic>
+    <h4>Sind sie sicher, dass Sie die Fahrt akzeptieren möchten?</h4>
+</ng-template>

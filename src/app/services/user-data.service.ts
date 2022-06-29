@@ -6,6 +6,9 @@ import {
   DocumentChangeAction
 } from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
+import firebase from "firebase/compat/app";
+import FieldValue = firebase.firestore.FieldValue;
+import {arrayUnion} from "@angular/fire/firestore";
 import {MyUser} from "../model/interfaces/myUser";
 import {AuthService} from "./user/auth.service";
 import {snapshotChanges} from "@angular/fire/compat/database";
@@ -30,6 +33,22 @@ export class UserDataService implements OnInit {
   getUserDataById_Observable(userId: string): Observable<MyUser | undefined>{
     return this.userCollection.doc(userId).valueChanges();
   }
+
+
+
+  async addDriverOfRide(userId: any, rideId: any){
+    await this.afs.collection('users').doc(userId).update({
+      fahrtenAlsFahrer: arrayUnion(rideId)
+    })  }
+
+  async addPassengerOfRide(userId: any, rideId: any){
+    await this.afs.collection('users').doc(userId).update({
+      fahrtenAlsMitfahrer: arrayUnion(rideId)
+    })
+  }
+
+
+
   getUserData(){
     this.getUserDataById_Observable(this.authService.userData.userId).subscribe((data)=>{
       this.userdaten= data;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FahrtenService } from 'src/app/services/fahrten.service';
 import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {HelpService} from "src/app/services/help.service";
+import {PaymentService} from "src/app/services/payment.service";
 
 @Component({
   selector: 'app-fahrt-list',
@@ -13,7 +15,8 @@ export class FahrtListComponent implements OnInit {
   public fahrten!: any;
   date:Date=new Date();
 
-  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal) {
+  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal, private helperService: HelpService,
+              public paymentService: PaymentService) {
    this.getData();
   }
 
@@ -24,16 +27,13 @@ export class FahrtListComponent implements OnInit {
     try{
       await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
         Promise.all(rideDocPromisses).then((rideDocument)=> {
-          let fahrten = rideDocument.map(el => {
-            if(el.ankunft){
-              el.ankunft = el.ankunft.toDate();
+          let fahrten = this.helperService.firebaseDateToNormalDate(rideDocument, ["ankunft", "abfahrt"]);
+          fahrten.map((fahrt)=>{
+            if(!('price' in fahrt)){
+              fahrt.price = 0;
+              return fahrt;
             }
-            if(el.abfahrt){
-              el.abfahrt = el.abfahrt.toDate();
-            }
-            return el;
-
-          });
+          })
           this.fahrten = fahrten.sort(function(a,b){
             return a.abfahrt - b.abfahrt;
           });

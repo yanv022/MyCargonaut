@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
-import {UserDataService} from "../../services/user-data.service";
+import {UserDataService} from "src/app/services/user-data.service";
+
 
 @Component({
   selector: 'app-profil',
@@ -15,9 +16,8 @@ export class ProfilComponent implements OnInit {
   email:string = "max@gmail.com";
   photoURL: string = "https://img.icons8.com/ios/100/000000/contract-job.png";
   emailVerified: boolean = false;
-
   defaultDate="1995-12-12";
-  private user: any;
+  user: any;
 
 
   constructor(public authService: AuthService,
