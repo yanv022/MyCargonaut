@@ -14,9 +14,10 @@ import {VerifyEmailComponent} from "./components/verify-email/verify-email.compo
 import { AddModalComponent } from './components/modals/add-modal/add-modal.component';
 import {SignUpComponent} from "./components/sign-up/sign-up.component";
 import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
+import {LoggedInGuard} from "src/app/guards/logged-in.guard";
 
 const routes: Routes = [
-  {path: 'profil',component: ProfilComponent},
+  {path: 'profil',component: ProfilComponent, canActivate: [LoggedInGuard]},
   {path: 'bewertung',component: BewertungComponent},
   {path: 'fahrtErstellen',component: AddModalComponent},
   {path: '',component:HomepageComponent },
