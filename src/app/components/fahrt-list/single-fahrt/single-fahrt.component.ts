@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { UserDataService } from 'src/app/services/user/user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {BuchenComponent} from "../buchen/buchen.component";
 import {HelpService} from "src/app/services/help.service";

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
-import {UserDataService} from "../../services/user-data.service";
+import {UserDataService} from "src/app/services/user/user-data.service";
 import {FahrtenService} from "../../services/fahrten.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 

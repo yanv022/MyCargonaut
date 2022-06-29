@@ -33,6 +33,7 @@ import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrag
 import { AcceptModalComponent } from './components/modals/accept-modal/accept-modal.component';
 import { RequestAcceptModalComponent } from './components/modals/request-accept-modal/request-accept-modal.component';
 import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
+import { AddVehicleComponent } from './components/modals/add-vehicle/add-vehicle.component';
 
 
 
@@ -61,6 +62,7 @@ import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/
     AcceptModalComponent,
     RequestAcceptModalComponent,
     AnfrageSucheComponent,
+    AddVehicleComponent,
   ],
   imports: [
     BrowserModule,
