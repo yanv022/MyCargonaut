@@ -1,49 +1,48 @@
-.fahrtList{
-padding: 15px 15px 30px 15px;
+.fahrtList {
+  padding: 15px 15px 30px 15px;
 }
-.card{
- border-radius: 17px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
+.card {
+  border-radius: 17px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-.head{
- margin: 20px 20px 20px 20px;
+.head {
+  margin: 20px 20px 20px 20px;
 }
 
-.element{
+.element {
   padding: 10px 0 10px 0px;
 }
 .embed-responsive .card-img-top {
-
   border-radius: 50%;
 }
-.buchen{
+.buchen {
   margin: 17px 0 0 20px;
   background-color: #def2f1;
   border-radius: 5px;
   padding-top: 5px;
 }
-.amount{
+.amount {
   margin-left: 20px;
   padding-bottom: 30px;
 }
 
-.name{
+.name {
   padding-top: 30px;
 }
 
-.detail{
+.detail {
   background-color: #def2f1;
   border-radius: 5px;
   margin-top: 12px;
 }
 
-.btn{
-  background-color: #DEF2F1 !important;
+.btn {
+  background-color: #def2f1 !important;
   color: black;
 }
 
 @media only screen and (min-width: 400px) {
-  .container{
+  .container {
     padding-bottom: 245px;
   }
 }

@@ -1,44 +1,66 @@
 <div class="card" *ngIf="loaded">
-    <div class="card-body">
-        <div>
-            <div class="row">
-                <div class="col-md-3">
-                    <h6>{{fahrt.wo}}</h6>
-                    <h6 *ngIf="helperService.isDate(fahrt.abfahrt) else abfahrtNoPipe">{{fahrt.abfahrt |  date: 'medium'}}</h6>
-                    <ng-template #abfahrtNoPipe>
-                        <h6>{{fahrt.abfahrt}}</h6>
-                    </ng-template>
-                    <p class="name">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="50">
-                    </p>
-                    <h6 >{{user.displayName}}</h6>
-                    <p>{{user.forname}} {{user.surname}}</p>
-                    <span><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i><i class="fa-solid fa-star stern"></i></span>
-
-                </div>
-                <div class="col-md-1">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-                <div class="col-md-4">
-                    <h6>{{fahrt.wohin}}</h6>
-                    <h6 *ngIf="helperService.isDate(fahrt.ankunft) else ankunftNoPipe">{{fahrt.ankunft |  date: 'medium'}}</h6>
-                    <ng-template #ankunftNoPipe>
-                        <h6>{{fahrt.ankunft}}</h6>
-                    </ng-template>
-                    <br/>
-                    <div class="card" *ngIf="fahrt.car">
-                        <div class="card-body">
-                            <h6>Plätze: {{fahrt.car.seats}}</h6>
-                            <h6>Auto: {{fahrt.car.brand}} {{fahrt.car.model}} {{fahrt.car.type}}</h6>
-                            <h6>Kofferraum: {{fahrt.car.storageInKg}} KG</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 marge" >
-                    <h5 class="amount">{{fahrt.price}} $</h5>
-                    <button type="button" class="btn btn-outline-primary" (click)="buchen()"><h6 class="btnbuchen">BUCHEN</h6></button>
-                </div>
-            </div>
+  <div class="card-body">
+    <div>
+      <div class="row">
+        <div class="col-md-3">
+          <h6>{{ fahrt.wo }}</h6>
+          <h6 *ngIf="helperService.isDate(fahrt.abfahrt); else abfahrtNoPipe">
+            {{ fahrt.abfahrt | date: 'medium' }}
+          </h6>
+          <ng-template #abfahrtNoPipe>
+            <h6>{{ fahrt.abfahrt }}</h6>
+          </ng-template>
+          <p class="name">
+            <img
+              src="https://bootdey.com/img/Content/avatar/avatar7.png"
+              alt="Admin"
+              class="rounded-circle"
+              width="50"
+            />
+          </p>
+          <h6>{{ user.displayName }}</h6>
+          <p>{{ user.forname }} {{ user.surname }}</p>
+          <span
+            ><i class="fa-solid fa-star stern"></i
+            ><i class="fa-solid fa-star stern"></i
+            ><i class="fa-solid fa-star stern"></i
+            ><i class="fa-solid fa-star stern"></i
+          ></span>
         </div>
+        <div class="col-md-1">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="col-md-4">
+          <h6>{{ fahrt.wohin }}</h6>
+          <h6 *ngIf="helperService.isDate(fahrt.ankunft); else ankunftNoPipe">
+            {{ fahrt.ankunft | date: 'medium' }}
+          </h6>
+          <ng-template #ankunftNoPipe>
+            <h6>{{ fahrt.ankunft }}</h6>
+          </ng-template>
+          <br />
+          <div class="card" *ngIf="fahrt.car">
+            <div class="card-body">
+              <h6>Plätze: {{ fahrt.car.seats }}</h6>
+              <h6>
+                Auto: {{ fahrt.car.brand }} {{ fahrt.car.model }}
+                {{ fahrt.car.type }}
+              </h6>
+              <h6>Kofferraum: {{ fahrt.car.storageInKg }} KG</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 marge">
+          <h5 class="amount">{{ fahrt.price }} $</h5>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="buchen()"
+          >
+            <h6 class="btnbuchen">BUCHEN</h6>
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,2 +1,7 @@
-<ngb-alert #alert *ngIf="alertMessage" type="{{alertService.type}}" (closed)="alertMessage = ''">{{ alertMessage }}
+<ngb-alert
+  #alert
+  *ngIf="alertMessage"
+  type="{{ alertService.type }}"
+  (closed)="alertMessage = ''"
+  >{{ alertMessage }}
 </ngb-alert>

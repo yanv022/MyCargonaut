@@ -1,34 +1,53 @@
 <div class="card" style="width: 30rem; border-radius: 15px">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-10">
-                <h5 class="card-title">{{request.name}}</h5>
-            </div>
-            <div class="col-2">
-                <h5 class="card-title">{{request.price}} $</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5">
-                <p>von: {{request.wo}}</p>
-                <h6 *ngIf="helperService.isDate(request.abfahrt) else ankunftNoPipe">Abfahrt: {{request.abfahrt |  date: 'medium'}}</h6>
-                <ng-template #ankunftNoPipe>
-                    <h6>Abfahrt: {{request.abfahrt}}</h6>
-                </ng-template>
-            </div>
-            <div class="col-2">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                    <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/>
-                </svg>
-            </div>
-            <div class="col-5">
-                <p>nach: {{request.wohin}}</p>
-                <h6 *ngIf="helperService.isDate(request.ankunft) else ankunftNoPipe">Ankunft: {{request.ankunft |  date: 'medium'}}</h6>
-                <ng-template #ankunftNoPipe>
-                    <h6>Ankunft: {{request.ankunft}}</h6>
-                </ng-template>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" style="width: 100%;" (click)="acceptRequest()">Fahrt annehmen</button>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-10">
+        <h5 class="card-title">{{ request.name }}</h5>
+      </div>
+      <div class="col-2">
+        <h5 class="card-title">{{ request.price }} $</h5>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-5">
+        <p>von: {{ request.wo }}</p>
+        <h6 *ngIf="helperService.isDate(request.abfahrt); else ankunftNoPipe">
+          Abfahrt: {{ request.abfahrt | date: 'medium' }}
+        </h6>
+        <ng-template #ankunftNoPipe>
+          <h6>Abfahrt: {{ request.abfahrt }}</h6>
+        </ng-template>
+      </div>
+      <div class="col-2">
+        <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        >
+          <path
+            d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"
+          />
+        </svg>
+      </div>
+      <div class="col-5">
+        <p>nach: {{ request.wohin }}</p>
+        <h6 *ngIf="helperService.isDate(request.ankunft); else ankunftNoPipe">
+          Ankunft: {{ request.ankunft | date: 'medium' }}
+        </h6>
+        <ng-template #ankunftNoPipe>
+          <h6>Ankunft: {{ request.ankunft }}</h6>
+        </ng-template>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      style="width: 100%"
+      (click)="acceptRequest()"
+    >
+      Fahrt annehmen
+    </button>
+  </div>
 </div>

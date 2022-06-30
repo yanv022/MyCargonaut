@@ -1,21 +1,37 @@
 <div class="modal-header">
-    <h4 class="modal-title">Fahrt von {{data.wo}} nach {{data.wohin}}</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  <h4 class="modal-title">Fahrt von {{ data.wo }} nach {{ data.wohin }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
 </div>
 <div class="modal-body">
-    <h4>Wählen Sie das Auto für die Fahrt aus</h4>
-    <br/>
-    <div id="car" ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-primary" id="carBtn" ngbDropdownToggle>Auto auswählen</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-            <button ngbDropdownItem (click)="setCar(car)" *ngFor="let car of cars">{{car.brand}} {{car.model}}</button>
-        </div>
+  <h4>Wählen Sie das Auto für die Fahrt aus</h4>
+  <br />
+  <div id="car" ngbDropdown class="d-inline-block">
+    <button type="button" class="btn btn-primary" id="carBtn" ngbDropdownToggle>
+      Auto auswählen
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="setCar(car)" *ngFor="let car of cars">
+        {{ car.brand }} {{ car.model }}
+      </button>
     </div>
-    <br/>
-    <h5 *ngIf="selectedCar">{{selectedCar.brand}} {{selectedCar.model}}</h5>
+  </div>
+  <br />
+  <h5 *ngIf="selectedCar">{{ selectedCar.brand }} {{ selectedCar.model }}</h5>
 </div>
 <div class="modal-footer">
-    <button type="submit" class="btn btn btn-success" (click)="accept()">Bestätigen</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Close</button>
+  <button type="submit" class="btn btn btn-success" (click)="accept()">
+    Bestätigen
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.dismiss('Close click')"
+  >
+    Close
+  </button>
 </div>
-

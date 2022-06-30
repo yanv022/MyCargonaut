@@ -1,9 +1,9 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
-import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
-import {set} from "@angular/fire/database";
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { set } from '@angular/fire/database';
 
 @Component({
   selector: 'app-buchen',
@@ -13,22 +13,26 @@ import {set} from "@angular/fire/database";
 export class BuchenComponent implements OnInit {
   @Input() data: any;
   //TODO: IMPLEMENT FAHRT DATA INTO MODAL TEXT
-  isAllert=false;
+  isAllert = false;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal) {}
 
   private _success = new Subject<string>();
 
   staticAlertClosed = false;
   successMessage = '';
 
-  @ViewChild('staticAlert', {static: false}) staticAlert: NgbAlert | undefined;
-  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert | undefined;
+  @ViewChild('staticAlert', { static: false }) staticAlert:
+    | NgbAlert
+    | undefined;
+  @ViewChild('selfClosingAlert', { static: false }) selfClosingAlert:
+    | NgbAlert
+    | undefined;
 
   ngOnInit(): void {
     setTimeout(() => this.staticAlert?.close(), 20000);
 
-    this._success.subscribe(message => this.successMessage = message);
+    this._success.subscribe((message) => (this.successMessage = message));
     this._success.pipe(debounceTime(3000)).subscribe(() => {
       if (this.selfClosingAlert) {
         this.selfClosingAlert.close();
@@ -38,8 +42,7 @@ export class BuchenComponent implements OnInit {
   }
 
   public buchen() {
-    this.isAllert= true;
-    this._success.next("Danke für ihre Buchung");
+    this.isAllert = true;
+    this._success.next('Danke für ihre Buchung');
   }
-
 }

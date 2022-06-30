@@ -1,22 +1,41 @@
 <div class="modal-header">
-    <h4 class="modal-title">Neues Fahrzeug hinzufügen</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss(car)"></button>
+  <h4 class="modal-title">Neues Fahrzeug hinzufügen</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss(car)"
+  ></button>
 </div>
 <div class="modal-body">
-    <label for="brand">Marke:</label>
-    <input id="brand" type="text" class="form-control" [(ngModel)]="car.brand"/>
-    <label for="colour">Farbe:</label>
-    <input id="colour" type="text" class="form-control" [(ngModel)]="car.color"/>
-    <label for="model">Model:</label>
-    <input id="model" type="text" class="form-control" [(ngModel)]="car.model"/>
-    <label for="seats">Sitze:</label>
-    <input id="seats" type="text" class="form-control" [(ngModel)]="car.seats"/>
-    <label for="storage">Ladekapazität:</label>
-    <input id="storage" type="text" class="form-control" placeholder="Angaben bitte in Kilogramm" [(ngModel)]="car.storageInKg"/>
-    <label for="type">Art:</label>
-    <input id="type" type="text" class="form-control" [(ngModel)]="car.type"/>
+  <label for="brand">Marke:</label>
+  <input id="brand" type="text" class="form-control" [(ngModel)]="car.brand" />
+  <label for="colour">Farbe:</label>
+  <input id="colour" type="text" class="form-control" [(ngModel)]="car.color" />
+  <label for="model">Model:</label>
+  <input id="model" type="text" class="form-control" [(ngModel)]="car.model" />
+  <label for="seats">Sitze:</label>
+  <input id="seats" type="text" class="form-control" [(ngModel)]="car.seats" />
+  <label for="storage">Ladekapazität:</label>
+  <input
+    id="storage"
+    type="text"
+    class="form-control"
+    placeholder="Angaben bitte in Kilogramm"
+    [(ngModel)]="car.storageInKg"
+  />
+  <label for="type">Art:</label>
+  <input id="type" type="text" class="form-control" [(ngModel)]="car.type" />
 </div>
 <div class="modal-footer">
-    <button type="submit" class="btn btn btn-success" (click)="submitData()">Hinzufügen</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss(car)">Close</button>
+  <button type="submit" class="btn btn btn-success" (click)="submitData()">
+    Hinzufügen
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.dismiss(car)"
+  >
+    Close
+  </button>
 </div>

@@ -4,20 +4,20 @@ import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
+  AngularFirestoreDocument
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import {MyUser} from "../../model/interfaces/myUser";
+import { MyUser } from '../../model/interfaces/myUser';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   userData: any; // Save logged in user data
-  localusername : string ='';
-  localgbdatum : Date = new Date('');
-  localGeld : number = 500;
-  localdisname : string = '';
-  localphotoURL : string = '';
+  localusername: string = '';
+  localgbdatum: Date = new Date('');
+  localGeld: number = 500;
+  localdisname: string = '';
+  localphotoURL: string = '';
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
@@ -38,7 +38,7 @@ export class AuthService {
       }
     });
   }
-  setauth( disname:string, username : string, gbDatum:Date){
+  setauth(disname: string, username: string, gbDatum: Date) {
     this.localusername = username;
     this.localgbdatum = gbDatum;
     this.localdisname = disname;
@@ -52,8 +52,8 @@ export class AuthService {
           this.router.navigate(['profil']);
         });
         this.SetUserData(result.user);
-        console.log('test')
-        console.log('user', result)
+        console.log('test');
+        console.log('user', result);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -69,7 +69,7 @@ export class AuthService {
         up and returns promise */
         //this.SendVerificationMail();
         //this.SetUserData(result.user);
-        this.SetUserDataRegistrierung(result.user)
+        this.SetUserDataRegistrierung(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -130,34 +130,34 @@ export class AuthService {
     );
     const userData: MyUser = {
       uid: user.uid,
-      username :'leer',
+      username: 'leer',
       email: user.email,
       displayName: 'leer',
       photoURL: 'leer',
-      dayOfBirth: new Date(""),
+      dayOfBirth: new Date(''),
       emailVerified: user.emailVerified,
-      geld : this.localGeld
+      geld: this.localGeld
     };
     return userRef.set(userData, {
-      merge: true,
+      merge: true
     });
   }
-  SetUserDataRegistrierung(user: any, ) {
+  SetUserDataRegistrierung(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: MyUser = {
       uid: user.uid,
-      username :this.localusername,
+      username: this.localusername,
       email: user.email,
       displayName: this.localdisname,
       photoURL: this.localphotoURL,
       dayOfBirth: this.localgbdatum,
       emailVerified: user.emailVerified,
-      geld : this.localGeld
+      geld: this.localGeld
     };
     return userRef.set(userData, {
-      merge: true,
+      merge: true
     });
   }
   // Sign out
@@ -179,7 +179,7 @@ export class AuthService {
   /** FOR APP MODULE INIT
    *  - dient dazu um den Authentifizierungsservice beim erstmaligen laden der Seite direkt zu initialisieren.
    * */
-  initalizeService(){
-    console.log("Authentification Serivce successfully initialized");
+  initalizeService() {
+    console.log('Authentification Serivce successfully initialized');
   }
 }

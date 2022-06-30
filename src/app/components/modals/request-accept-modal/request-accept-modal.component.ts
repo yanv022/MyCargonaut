@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
@@ -13,19 +13,27 @@ export class RequestAcceptModalComponent implements OnInit {
   @Output() submit = new EventEmitter<{}>();
   selectedCar: any;
 
-  constructor(public activeModal: NgbActiveModal, private alertService: AlertService) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private alertService: AlertService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   accept() {
-    if(this.selectedCar != undefined) {
+    if (this.selectedCar != undefined) {
       this.submit.emit(this.selectedCar.autoId);
-      this.alertService.newAlert('Sie haben die Fahrt erfolgreich angenommen', 'success');
+      this.alertService.newAlert(
+        'Sie haben die Fahrt erfolgreich angenommen',
+        'success'
+      );
       this.activeModal.dismiss();
       return;
     }
-    this.alertService.newAlert('Bitte wählen Sie zuerst ein Auto aus', 'warning');
+    this.alertService.newAlert(
+      'Bitte wählen Sie zuerst ein Auto aus',
+      'warning'
+    );
   }
 
   setCar(car: any) {
