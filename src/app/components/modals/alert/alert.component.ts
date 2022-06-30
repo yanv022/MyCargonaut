@@ -1,19 +1,19 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
-import {debounceTime} from "rxjs";
-import { AlertService} from "src/app/services/alert.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { debounceTime } from 'rxjs';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
+  styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent implements OnInit{
+export class AlertComponent implements OnInit {
   _messages!: any;
   type: string;
   alertMessage = '';
 
-  @ViewChild('alert', {static: false}) alert!: NgbAlert;
+  @ViewChild('alert', { static: false }) alert!: NgbAlert;
 
   constructor(public alertService: AlertService) {
     this._messages = this.alertService._messages;
@@ -21,7 +21,9 @@ export class AlertComponent implements OnInit{
   }
 
   ngOnInit() {
-    this._messages.subscribe((message: string) => this.alertMessage = message);
+    this._messages.subscribe(
+      (message: string) => (this.alertMessage = message)
+    );
     this._messages.pipe(debounceTime(5000)).subscribe(() => {
       if (this.alert) {
         this.alert.close();

@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,20 +9,20 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { BewertungComponent } from './components/bewertung/bewertung.component';
 import { FahrtListComponent } from './components/fahrt-list/fahrt-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {AngularFireModule} from "@angular/fire/compat";
-import {environment} from "src/environments/environment";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
-import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
-import {AngularFireStorageModule} from "@angular/fire/compat/storage";
-import {HttpClientModule} from "@angular/common/http";
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AddModalComponent } from './components/modals/add-modal/add-modal.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SingleFahrtComponent } from './components/fahrt-list/single-fahrt/single-fahrt.component';
-import {AuthService} from "./services/user/auth.service";
+import { AuthService } from './services/user/auth.service';
 import { AlertComponent } from './components/modals/alert/alert.component';
 import { FahrtSucheComponent } from './components/fahrt-list/fahrt-suche/fahrt-suche.component';
 import { BuchenComponent } from './components/fahrt-list/buchen/buchen.component';
@@ -34,8 +34,6 @@ import { AcceptModalComponent } from './components/modals/accept-modal/accept-mo
 import { RequestAcceptModalComponent } from './components/modals/request-accept-modal/request-accept-modal.component';
 import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/anfrage-suche.component';
 import { AddVehicleComponent } from './components/modals/add-vehicle/add-vehicle.component';
-
-
 
 @NgModule({
   declarations: [
@@ -62,7 +60,7 @@ import { AddVehicleComponent } from './components/modals/add-vehicle/add-vehicle
     AcceptModalComponent,
     RequestAcceptModalComponent,
     AnfrageSucheComponent,
-    AddVehicleComponent,
+    AddVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +81,7 @@ import { AddVehicleComponent } from './components/modals/add-vehicle/add-vehicle
       deps: [AuthService],
       multi: true
     }
-      ],
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule{}
+export class AppModule {}

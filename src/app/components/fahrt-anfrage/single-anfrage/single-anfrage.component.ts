@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HelpService } from 'src/app/services/help.service';
-import {AnfragenService} from "src/app/services/anfragen.service";
+import { AnfragenService } from 'src/app/services/anfragen.service';
 import { AuthService } from 'src/app/services/user/auth.service';
-import {AlertService} from "src/app/services/alert.service";
-
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-single-anfrage',
@@ -13,11 +12,14 @@ import {AlertService} from "src/app/services/alert.service";
 export class SingleAnfrageComponent implements OnInit {
   @Input() request!: any;
 
-  constructor(public helperService: HelpService, private anfragenService: AnfragenService,
-              private authService: AuthService, private alertService: AlertService) { }
+  constructor(
+    public helperService: HelpService,
+    private anfragenService: AnfragenService,
+    private authService: AuthService,
+    private alertService: AlertService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async acceptRequest() {
     try {
@@ -29,9 +31,6 @@ export class SingleAnfrageComponent implements OnInit {
       this.anfragenService.acceptRequest(this.request);
     } catch (e) {
       this.helperService.handleNotLoggedInError(e);
-
     }
-    }
-
-
+  }
 }

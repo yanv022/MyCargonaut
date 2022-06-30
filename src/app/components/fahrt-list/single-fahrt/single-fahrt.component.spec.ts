@@ -8,9 +8,8 @@ describe('SingleFahrtComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleFahrtComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleFahrtComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,51 +1,110 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{name}}</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  <h4 class="modal-title">{{ name }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
 </div>
 <div class="modal-body">
-    <label for="title">Titel:</label>
-    <input id="title" type="text" class="form-control" [(ngModel)]="title"/>
-    <label for="where">Von wo?</label>
-    <input id="where" type="text" class="form-control" [(ngModel)]="where"/>
-    <label for="date">Abfahrtsdatum</label>
-    <div id="date">
-        <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd"
-                   name="dp" [(ngModel)]="dateAbfahrt" ngbDatepicker #d="ngbDatepicker">
-            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">+</button>
-        </div>
+  <label for="title">Titel:</label>
+  <input id="title" type="text" class="form-control" [(ngModel)]="title" />
+  <label for="where">Von wo?</label>
+  <input id="where" type="text" class="form-control" [(ngModel)]="where" />
+  <label for="date">Abfahrtsdatum</label>
+  <div id="date">
+    <div class="input-group">
+      <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        [(ngModel)]="dateAbfahrt"
+        ngbDatepicker
+        #d="ngbDatepicker"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        (click)="d.toggle()"
+        type="button"
+      >
+        +
+      </button>
     </div>
-    <label for="time">Abfahrtszeit</label>
-    <ngb-timepicker id="time" [(ngModel)]="timeAbfahrt" style="zoom:0.8"></ngb-timepicker>
-    <label for="to">Wohin?</label>
-    <input id="to" type="text" class="form-control" [(ngModel)]="to"/>
-    <label for="dateAnkunft">Ankunftsdatum</label>
-    <div id="dateAnkunft">
-        <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd"
-                   name="dp" [(ngModel)]="dateAnkunft" ngbDatepicker #ad="ngbDatepicker">
-            <button class="btn btn-outline-secondary" (click)="ad.toggle()" type="button">+</button>
-        </div>
+  </div>
+  <label for="time">Abfahrtszeit</label>
+  <ngb-timepicker
+    id="time"
+    [(ngModel)]="timeAbfahrt"
+    style="zoom: 0.8"
+  ></ngb-timepicker>
+  <label for="to">Wohin?</label>
+  <input id="to" type="text" class="form-control" [(ngModel)]="to" />
+  <label for="dateAnkunft">Ankunftsdatum</label>
+  <div id="dateAnkunft">
+    <div class="input-group">
+      <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        [(ngModel)]="dateAnkunft"
+        ngbDatepicker
+        #ad="ngbDatepicker"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        (click)="ad.toggle()"
+        type="button"
+      >
+        +
+      </button>
     </div>
-    <label for="Atime">Ankunftszeit</label>
-    <ngb-timepicker id="Atime" [(ngModel)]="timeAnkunft" style="zoom:0.8"></ngb-timepicker>
-    <label for="description">Beschreibung</label>
-    <input id="description" type="text" class="form-control" [(ngModel)]="description"/>
-    <ng-container *ngIf="indicator === 'fahrt'">
+  </div>
+  <label for="Atime">Ankunftszeit</label>
+  <ngb-timepicker
+    id="Atime"
+    [(ngModel)]="timeAnkunft"
+    style="zoom: 0.8"
+  ></ngb-timepicker>
+  <label for="description">Beschreibung</label>
+  <input
+    id="description"
+    type="text"
+    class="form-control"
+    [(ngModel)]="description"
+  />
+  <ng-container *ngIf="indicator === 'fahrt'">
     <label for="car">Auto</label>
-    <br/>
+    <br />
     <div id="car" ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-primary" id="carBtn" ngbDropdownToggle>Auto auswählen</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-            <button ngbDropdownItem (click)="setCar(car)" *ngFor="let car of cars">{{car.brand}} {{car.model}}</button>
-        </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="carBtn"
+        ngbDropdownToggle
+      >
+        Auto auswählen
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="setCar(car)" *ngFor="let car of cars">
+          {{ car.brand }} {{ car.model }}
+        </button>
+      </div>
     </div>
-    <h5 *ngIf="selectedCar">{{selectedCar.brand}} {{selectedCar.model}}</h5>
-    </ng-container>
-    <label for="price">Preis</label>
-    <input id="price" type="number" class="form-control" [(ngModel)]="price"/>
+    <h5 *ngIf="selectedCar">{{ selectedCar.brand }} {{ selectedCar.model }}</h5>
+  </ng-container>
+  <label for="price">Preis</label>
+  <input id="price" type="number" class="form-control" [(ngModel)]="price" />
 </div>
 <div class="modal-footer">
-    <button type="submit" class="btn btn btn-success" (click)="submitData()">Hinzufügen</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="submit" class="btn btn btn-success" (click)="submitData()">
+    Hinzufügen
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button>
 </div>

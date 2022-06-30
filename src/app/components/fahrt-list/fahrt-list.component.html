@@ -2,20 +2,31 @@
   <div class="row">
     <div class="col-md-4">
       <p>
-        <button type="button" style="margin-top:20px" class="btn btn-primary btn-sm -pull-right" (click)="newRide()"><i class="fa fa-plus" aria-hidden="true"></i> Neue Fahrt
-       </button>
-        <button type="button" style="margin-left: 12px; margin-top:20px" class="btn btn-primary btn-sm -pull-right" (click)="openModal()" ><i class="fa fa-search" aria-hidden="true"></i>
+        <button
+          type="button"
+          style="margin-top: 20px"
+          class="btn btn-primary btn-sm -pull-right"
+          (click)="newRide()"
+        >
+          <i class="fa fa-plus" aria-hidden="true"></i> Neue Fahrt
+        </button>
+        <button
+          type="button"
+          style="margin-left: 12px; margin-top: 20px"
+          class="btn btn-primary btn-sm -pull-right"
+          (click)="openModal()"
+        >
+          <i class="fa fa-search" aria-hidden="true"></i>
           Fahrt suche
         </button>
       </p>
     </div>
   </div>
-<div class="row" >
-  <ng-container *ngIf="fahrten">
-  <div class="col-sm-6 fahrtList" *ngFor="let fahrt of fahrten" >
-    <app-single-fahrt [fahrt]="fahrt"></app-single-fahrt>
+  <div class="row">
+    <ng-container *ngIf="fahrten">
+      <div class="col-sm-6 fahrtList" *ngFor="let fahrt of fahrten">
+        <app-single-fahrt [fahrt]="fahrt"></app-single-fahrt>
+      </div>
+    </ng-container>
   </div>
-  </ng-container>
 </div>
-</div>
-

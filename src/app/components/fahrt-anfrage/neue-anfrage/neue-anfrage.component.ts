@@ -1,11 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {NgbActiveModal, NgbAlert} from "@ng-bootstrap/ng-bootstrap";
-import {Subject} from "rxjs";
-import {debounceTime} from "rxjs/operators";
-import {CarsService} from "../../../services/cars.service";
-import {AuthService} from "../../../services/user/auth.service";
-import {AlertService} from "../../../services/alert.service";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
+import { NgbActiveModal, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { CarsService } from '../../../services/cars.service';
+import { AuthService } from '../../../services/user/auth.service';
+import { AlertService } from '../../../services/alert.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-neue-anfrage',
@@ -13,7 +20,6 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
   styleUrls: ['./neue-anfrage.component.scss']
 })
 export class NeueAnfrageComponent implements OnInit {
-
   @Input() name: any;
   title!: string;
   where!: string;
@@ -27,26 +33,19 @@ export class NeueAnfrageComponent implements OnInit {
   selectedCar!: any;
   @Output() submit = new EventEmitter<{}>();
 
+  constructor(
+    public activeModal: NgbActiveModal,
+    private afs: AngularFirestore
+  ) {}
 
-
-  constructor(public activeModal: NgbActiveModal,private afs:AngularFirestore) {
-
+  createAnfrage(a: any) {
+    this.afs.collection('anfragen').add(a);
   }
 
-
-
-
-  createAnfrage(a:any){
-    this.afs.collection("anfragen").add(a);
-  }
-
-  setCar(car: any){
+  setCar(car: any) {
     console.log(car);
     this.selectedCar = car;
   }
 
-  ngOnInit(): void {
-  }
-
-
+  ngOnInit(): void {}
 }

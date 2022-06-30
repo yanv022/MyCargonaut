@@ -8,9 +8,8 @@ describe('FahrtListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FahrtListComponent ]
-    })
-    .compileComponents();
+      declarations: [FahrtListComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

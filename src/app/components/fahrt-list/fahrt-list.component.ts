@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FahrtenService } from 'src/app/services/fahrten.service';
-import {FahrtSucheComponent} from "./fahrt-suche/fahrt-suche.component";
+import { FahrtSucheComponent } from './fahrt-suche/fahrt-suche.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {HelpService} from "src/app/services/help.service";
-import {PaymentService} from "src/app/services/payment.service";
+import { HelpService } from 'src/app/services/help.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-fahrt-list',
@@ -11,53 +11,57 @@ import {PaymentService} from "src/app/services/payment.service";
   styleUrls: ['./fahrt-list.component.scss']
 })
 export class FahrtListComponent implements OnInit {
-  public isCollapsed = true
+  public isCollapsed = true;
   public fahrten!: any;
-  date:Date=new Date();
+  date: Date = new Date();
 
-  constructor(public fahrtenService: FahrtenService , public modalService: NgbModal, private helperService: HelpService,
-              public paymentService: PaymentService) {
-   this.getData();
+  constructor(
+    public fahrtenService: FahrtenService,
+    public modalService: NgbModal,
+    private helperService: HelpService,
+    public paymentService: PaymentService
+  ) {
+    this.getData();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async getData() {
-    try{
-      await this.fahrtenService.getAllRides().forEach((rideDocPromisses)=>{
-        Promise.all(rideDocPromisses).then((rideDocument)=> {
-          let fahrten = this.helperService.firebaseDateToNormalDate(rideDocument, ["ankunft", "abfahrt"]);
-          fahrten.map((fahrt)=>{
-            if(!('price' in fahrt)){
+    try {
+      await this.fahrtenService.getAllRides().forEach((rideDocPromisses) => {
+        Promise.all(rideDocPromisses).then((rideDocument) => {
+          let fahrten = this.helperService.firebaseDateToNormalDate(
+            rideDocument,
+            ['ankunft', 'abfahrt']
+          );
+          fahrten.map((fahrt) => {
+            if (!('price' in fahrt)) {
               fahrt.price = 0;
               return fahrt;
             }
-          })
-          this.fahrten = fahrten.sort(function(a,b){
+          });
+          this.fahrten = fahrten.sort(function (a, b) {
             return a.abfahrt - b.abfahrt;
           });
-        })
+        });
       });
-      }
-    catch (e) {
+    } catch (e) {
       console.log('err');
     }
   }
 
-
-
-  newRide(){
+  newRide() {
     this.fahrtenService.openAddModal();
   }
   openModal() {
     //ModalComponent is component name where modal is declare
     const modalRef = this.modalService.open(FahrtSucheComponent);
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
+    modalRef.result
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
 }

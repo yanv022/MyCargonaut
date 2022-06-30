@@ -1,10 +1,10 @@
-export  interface MyUser {
+export interface MyUser {
   uid: string;
-  username : string;
+  username: string;
   email: string;
   displayName: string;
   photoURL: string;
-  dayOfBirth: Date ;
+  dayOfBirth: Date;
   emailVerified: boolean;
-  geld : number;
+  geld: number;
 }

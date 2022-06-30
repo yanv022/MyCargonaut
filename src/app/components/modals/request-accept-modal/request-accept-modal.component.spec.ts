@@ -8,9 +8,8 @@ describe('RequestAcceptModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RequestAcceptModalComponent ]
-    })
-    .compileComponents();
+      declarations: [RequestAcceptModalComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

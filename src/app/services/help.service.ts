@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {AlertService} from "src/app/services/alert.service";
-import {CarsService} from "src/app/services/cars.service";
-import {NotFoundError} from "rxjs";
+import { Injectable } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
+import { CarsService } from 'src/app/services/cars.service';
+import { NotFoundError } from 'rxjs';
 import firebase from 'firebase/compat';
 import { UserDataService } from 'src/app/services/user/user-data.service';
-import {FahrtenService} from "src/app/services/fahrten.service";
+import { FahrtenService } from 'src/app/services/fahrten.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,11 @@ import {FahrtenService} from "src/app/services/fahrten.service";
  * SERVICE FOR SHARED METHODS
  */
 export class HelpService {
-
-  constructor(private alertService: AlertService, private carsService: CarsService,
-              private userDataService: UserDataService) {
-  }
+  constructor(
+    private alertService: AlertService,
+    private carsService: CarsService,
+    private userDataService: UserDataService
+  ) {}
 
   isDate(potentialDate: any) {
     return potentialDate instanceof Date;
@@ -37,12 +38,15 @@ export class HelpService {
         }
       }
       return el;
-    })
+    });
   }
 
   handleNotLoggedInError(e: any, activeModal?: any) {
     if ('message' in e) {
-      if (e.message.includes('_delegate') || e.message.includes('_this.authService.userData')) {
+      if (
+        e.message.includes('_delegate') ||
+        e.message.includes('_this.authService.userData')
+      ) {
         this.alertService.newAlert('Bitte vorher einloggen', 'danger');
         activeModal?.dismiss(e);
         return;
@@ -51,7 +55,10 @@ export class HelpService {
       activeModal?.dismiss(e);
       return;
     } else {
-      this.alertService.newAlert('Etwas ist schief gelaufen, bitte erneut versuchen', 'danger');
+      this.alertService.newAlert(
+        'Etwas ist schief gelaufen, bitte erneut versuchen',
+        'danger'
+      );
       activeModal?.dismiss(e);
     }
   }
@@ -61,16 +68,19 @@ export class HelpService {
     await this.carsService.getCarsOfUser(uid).forEach((cars) => {
       Promise.all(cars).then((cars) => {
         userCars = cars;
-      })
-    userCars = this.checkCars(userCars, activeModal);
-    return userCars;
-    })
+      });
+      userCars = this.checkCars(userCars, activeModal);
+      return userCars;
+    });
   }
 
   checkCars(cars: any, activeModal: any) {
     if (cars != undefined) {
       if (cars.length === 0) {
-        this.alertService.newAlert('Sie brauchen mindestens ein Auto', 'danger');
+        this.alertService.newAlert(
+          'Sie brauchen mindestens ein Auto',
+          'danger'
+        );
         activeModal.dismiss('Auto benötigt');
         return undefined;
       }
@@ -82,9 +92,8 @@ export class HelpService {
     }
   }
 
-  addRideForPassengerAndDriver(driverId: any, passengerId: any, rideId: any){
+  addRideForPassengerAndDriver(driverId: any, passengerId: any, rideId: any) {
     this.userDataService.addDriverOfRide(driverId, rideId);
-    this.userDataService.addPassengerOfRide(passengerId, rideId)
+    this.userDataService.addPassengerOfRide(passengerId, rideId);
   }
-
 }
