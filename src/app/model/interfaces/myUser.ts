@@ -6,5 +6,5 @@ export interface MyUser {
   photoURL: string;
   dayOfBirth: Date;
   emailVerified: boolean;
-  geld: number;
+  tokens: number;
 }

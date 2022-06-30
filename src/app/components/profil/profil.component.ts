@@ -41,7 +41,12 @@ export class ProfilComponent implements OnInit {
       this.authService.userData.photoURL + '/assets/dummy-user.png';
   }
   async getuserdaten() {
-    const id = this.authService.userData.uid;
+    let id = await this.authService.userData.uid;
+    if (!id) {
+      setTimeout(async () => {
+        id = await this.authService.userData.uid;
+      }, 100);
+    }
     await this.userDataservice
       .getUserDataById_Observable(id)
       .subscribe((data) => {
