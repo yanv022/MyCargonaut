@@ -49,7 +49,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['profil']);
+          this.router.navigate(['']);
         });
         this.SetUserData(result.user);
         console.log('test');
@@ -103,7 +103,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['profil']);
+        this.router.navigate(['']);
       }
     });
   }
@@ -113,7 +113,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['profil']);
+          this.router.navigate(['']);
         });
         this.SetUserData(result.user);
       })
@@ -164,7 +164,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
     });
   }
   /*async getAllUser(): Promise<User[]> {
