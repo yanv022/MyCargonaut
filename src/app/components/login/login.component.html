@@ -4,7 +4,6 @@
     <aside class="col-md-6">
       <div class="card">
         <article class="card-body">
-          <a href="" class="float-right btn btn-outline-info" >Registrieren</a>
           <h4 class="card-title mb-4 mt-1">Anmelden</h4>
           <form>
             <div class="form-group">
@@ -23,6 +22,11 @@
               <button  class="btn btn-primary btn-block form-control" style="background-color: #2B7A78 ;margin-top: 12px" (click)="authService.GoogleAuth()"> Login  with Google </button>
             </div>
           </form>
+          <div class="row">
+            <h5 style="padding-top: 20px; text-align: center">Noch keinen Konto ?
+              <a [routerLink]="['login']" routerLinkActive="active" class="nav-link navgGosse" (click)="zuRegistrierung()"> Registrieren</a>
+            </h5>
+          </div>
         </article>
       </div>
 

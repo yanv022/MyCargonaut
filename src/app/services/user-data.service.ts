@@ -41,17 +41,23 @@ export class UserDataService implements OnInit {
       case 'NAME':
         this.userCollection.doc(this.authService.userData.uid).update({displayName:value});
         break;
-      case 'DISPLAYNAME':
-        this.userCollection.doc(this.authService.userData.uid).update({displayName:value});
+      case 'USERNAME':
+        this.userCollection.doc(this.authService.userData.uid).update({username:value});
         break;
       case 'EMAIL':
-        this.userCollection.doc(this.authService.userData.email).update({displayName:value});
+        this.userCollection.doc(this.authService.userData.email).update({email:value});
         break;
       case 'PHOTOURL':
-        this.userCollection.doc(this.authService.userData.photoURL).update({displayName:value});
+        this.userCollection.doc(this.authService.userData.photoURL).update({photoURL:value});
+        break;
+      case 'GBDATUM':
+        this.userCollection.doc(this.authService.userData.photoURL).update({dayOfBirth:new Date(value)});
+        break;
+      case 'PHOTOURL':
+        this.userCollection.doc(this.authService.userData.photoURL).update({photoURL:value});
         break;
       case 'EMAILVERIFIED':
-        this.userCollection.doc(this.authService.userData.emailVerified).update({displayName:value});
+        this.userCollection.doc(this.authService.userData.emailVerified).update({emailVerified:true});
         break;
       default:
         console.log('erreur atribute bei uptate')

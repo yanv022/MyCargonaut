@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/user/auth.service";
 import {UserDataService} from "../../services/user-data.service";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EditProfilComponent} from "./edit-profil/edit-profil.component";
 
 @Component({
@@ -45,6 +45,7 @@ export class ProfilComponent implements OnInit {
       console.log('fin methodehalo');
     })
   }
+
 
 
   onSelect(event:any) {

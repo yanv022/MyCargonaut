@@ -61,7 +61,7 @@ export class AuthService {
   }
   // Sign up with email/password
   /* die daten mussen voher in der registrierung componente gesetz werden*/
-  SignUp(email: string, password: string) {
+  SignUp(name:string, username : string, gbDatum:string, email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
@@ -69,7 +69,7 @@ export class AuthService {
         up and returns promise */
         //this.SendVerificationMail();
         //this.SetUserData(result.user);
-        this.SetUserDataRegistrierung(result.user)
+        this.SetUserDataRegistrierung(name, username , gbDatum,result.user)
         this.router.navigate(['']);
       })
       .catch((error) => {
@@ -143,20 +143,24 @@ export class AuthService {
       merge: true,
     });
   }
-  SetUserDataRegistrierung(user: any, ) {
+  SetUserDataRegistrierung(name:string, username : string, gbDatum:string,user: any ) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: MyUser = {
       uid: user.uid,
-      username :this.localusername,
+      username :username,
       email: user.email,
-      displayName: this.localdisname,
-      photoURL: this.localphotoURL,
-      dayOfBirth: this.localgbdatum,
+      displayName: name,
+      photoURL: "https://img.icons8.com/ios/100/000000/contract-job.png",
+      dayOfBirth: new Date(gbDatum),
       emailVerified: user.emailVerified,
       geld : this.localGeld
     };
+    console.log(userData);
+    this.userData = userData;
+    localStorage.setItem('user', JSON.stringify(userData));
+    JSON.parse(localStorage.getItem('user')!);
     return userRef.set(userData, {
       merge: true,
     });
