@@ -112,7 +112,7 @@ export class UserDataService implements OnInit {
       photoURL: photoURL,
       dayOfBirth: dayOfBirth,
       emailVerified: true,
-      geld: 500
+      tokens: 500
     };
     this.SetUserData(userData);
   }
@@ -128,7 +128,7 @@ export class UserDataService implements OnInit {
       photoURL: user.photoURL,
       dayOfBirth: user.dayOfBirth,
       emailVerified: user.emailVerified,
-      geld: 500
+      tokens: 500
     };
     return userRef.set(userData, {
       merge: true

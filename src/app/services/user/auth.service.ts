@@ -136,7 +136,7 @@ export class AuthService {
       photoURL: 'leer',
       dayOfBirth: new Date(''),
       emailVerified: user.emailVerified,
-      geld: this.localGeld
+      tokens: this.localGeld
     };
     return userRef.set(userData, {
       merge: true
@@ -154,7 +154,7 @@ export class AuthService {
       photoURL: this.localphotoURL,
       dayOfBirth: this.localgbdatum,
       emailVerified: user.emailVerified,
-      geld: this.localGeld
+      tokens: this.localGeld
     };
     return userRef.set(userData, {
       merge: true

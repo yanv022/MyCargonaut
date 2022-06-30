@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BuchenComponent } from '../buchen/buchen.component';
 import { HelpService } from 'src/app/services/help.service';
 import { FahrtenService } from 'src/app/services/fahrten.service';
+import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
   selector: 'app-single-fahrt',
@@ -18,7 +19,8 @@ export class SingleFahrtComponent implements OnInit {
   constructor(
     private userDataService: UserDataService,
     private fahrtenService: FahrtenService,
-    public helperService: HelpService
+    public helperService: HelpService,
+    public authService: AuthService
   ) {
     this.loaded = false;
   }
