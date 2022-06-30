@@ -85,8 +85,18 @@ export class FahrtenService {
     modalRef.result
       .then(async () => {
         const uid = await this.authService.userData._delegate.uid;
-        //TODO: WARUM IST SCHON EINE PASSENGER ID IN DATABASE? LOGIK ÜBERDENKEN
-        //await this.helperService.addRideForPassengerAndDriver(fahrt.creatorId, uid, )
+        await this.fahrtenCollection
+          .doc(fahrt.id)
+          .update({
+            accepted: true
+          })
+          .then(() => {
+            this.helperService.addRideForPassengerAndDriver(
+              fahrt.creatorId,
+              uid,
+              fahrt.id
+            );
+          });
       })
       .catch((error) => {
         console.log(error);
