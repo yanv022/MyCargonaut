@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+  <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p><strong>Sind Sie sicher, dass Sie  Ihre Profil löschen möchten?</strong></p>
+  <p>Alle Informationen, die mit diesem Benutzerprofil verbunden sind, werden dauerhaft gelöscht.
+    <span class="text-danger">Dieser Vorgang kann nicht rückgängig gemacht werden.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+  <button type="button" class="btn btn-danger" (click)="userDataservice.deleteUser()">löshen</button>
+</div>

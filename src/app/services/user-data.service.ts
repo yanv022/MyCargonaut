@@ -10,6 +10,7 @@ import {MyUser} from "../model/interfaces/myUser";
 import {AuthService} from "./user/auth.service";
 import {snapshotChanges} from "@angular/fire/compat/database";
 import {onSnapshot} from "@angular/fire/firestore";
+import {Router} from "@angular/router";
 
 
 
@@ -22,7 +23,8 @@ export class UserDataService implements OnInit {
 
 
   constructor(private afs: AngularFirestore,
-              public authService: AuthService) {
+              public authService: AuthService,
+              public router: Router,) {
     this.userCollection = this.afs.collection('users');
   }
   ngOnInit(): void {
@@ -74,7 +76,9 @@ export class UserDataService implements OnInit {
 
   }
   async deleteUser(){
-        this.userCollection.doc(this.authService.userData.uid).delete();
+        this.router.navigate(['']);
+        //this.userCollection.doc(this.authService.userData.uid).delete();
+        alert("Ihre Konto wurde erfolgreich gelösht");
   }
   async setData(userId: string, email: string,displazname: string,photoURL: string,dayOfBirth: Date, username: string){
     const userData: MyUser = {

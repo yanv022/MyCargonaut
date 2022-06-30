@@ -3,6 +3,7 @@ import {AuthService} from "../../services/user/auth.service";
 import {UserDataService} from "../../services/user-data.service";
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EditProfilComponent} from "./edit-profil/edit-profil.component";
+import {ConfirmDeleteComponent} from "./confirm-delete/confirm-delete.component";
 
 @Component({
   selector: 'app-profil',
@@ -24,7 +25,8 @@ export class ProfilComponent implements OnInit {
 
   constructor(public authService: AuthService,
               public userDataservice: UserDataService,
-              public modal: NgbModal)
+              public modal: NgbModal,
+              )
   {
     this.getuserdaten()
   }
@@ -45,9 +47,6 @@ export class ProfilComponent implements OnInit {
       console.log('fin methodehalo');
     })
   }
-
-
-
   onSelect(event:any) {
     let fileType = event.target.files[0].type;
     if (fileType.match(/image\/*/)) {
@@ -67,6 +66,15 @@ export class ProfilComponent implements OnInit {
     });
   }
   deleteuser(){
+    const modalRef = this.modal.open( ConfirmDeleteComponent, {
+      animation: true,
+      centered: true,
+    });
+    modalRef.dismissed.toPromise().then(async (result) => {
+      if (result) {
+        await this.userDataservice.deleteUser();
+      }
+    })
 
   }
 

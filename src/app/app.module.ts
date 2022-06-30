@@ -33,6 +33,7 @@ import { AnfrageSucheComponent } from './components/fahrt-anfrage/anfrage-suche/
 import { SingleAnfrageComponent } from './components/fahrt-anfrage/single-anfrage/single-anfrage.component';
 import { NeueAnfrageComponent } from './components/fahrt-anfrage/neue-anfrage/neue-anfrage.component';
 import { EditProfilComponent } from './components/profil/edit-profil/edit-profil.component';
+import { ConfirmDeleteComponent } from './components/profil/confirm-delete/confirm-delete.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { EditProfilComponent } from './components/profil/edit-profil/edit-profil
     AnfrageSucheComponent,
     SingleAnfrageComponent,
     NeueAnfrageComponent,
-    EditProfilComponent
+    EditProfilComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
